@@ -5,10 +5,8 @@ $(document).ready(function() {
     $(".member-name").text(data.name);
 
   });  
-  
-});
 
-var nbOptions = 4; // number of menus
+  var nbOptions = 5; // number of menus
 		var angleStart = -360; // start angle
  
 		// jquery rotate animation
@@ -39,3 +37,6 @@ var nbOptions = 4; // number of menus
 		});
 		 
 		setTimeout(function() { toggleOptions('.selector'); }, 100);
+  
+});
+
