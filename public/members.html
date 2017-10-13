@@ -21,26 +21,26 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/members">Logo-Image</a>
+        <a class="navbar-brand" href="/members" id="icon-logo"><span class="glyphicon glyphicon-user"></span></a>
       </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="/members">Link <span class="sr-only">(current)</span></a></li>
-          <li><a href="#">Link</a></li>
+          <li class="active"><a href="/members"><span class="member-name"></span></a></li>
           <li><form class="navbar-form navbar-right">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
+              <input type="text" class="form-control" id="search-bar" placeholder="Search">
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
+            <button type="submit" class="btn btn-default" id="submit-btn">Submit</button>
           </form></li>
-          <li><a class="navbar-brand" href="/logout">Logout</a></li>
+          <li><a class="navbar-brand" id="logout-btn" href="/logout">Logout</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
+    </div><!-- /End .container-fluid -->
+  </nav>
 
-  </div><!-- /End .container-fluid -->
-</nav>
+<!-- ============= START PROFILE BODY ================== -->
 
   <div class="container">
 
@@ -50,33 +50,28 @@
       </div> <!-- End col -->
     </div> <!-- End Row -->
 
-    <hr>
+    <div class="selector">
+      <button>Explore your interests!</button>
+      <ul>
+        <li>
+          <input id="c1" type="checkbox">
+          <label for="c1"><a href="#">Interest</a>1</label>
+        </li>
+        <li>
+          <input id="c2" type="checkbox">
+          <label for="c2">Interest2</label>
+        </li>
+        <li>
+          <input id="c3" type="checkbox">
+          <label for="c3">Interest3</label>
+        </li>
+        <li>
+          <input id="c4" type="checkbox">
+          <label for="c4">Interest4</label>
+        </li>
+      </ul>
+    </div><!-- End selector -->
 
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="selector">
-          <button>Explore your interests!</button>
-          <ul>
-            <li>
-              <input id="c1" type="checkbox">
-              <label for="c1"><a href="#">Interest</a>1</label>
-            </li>
-            <li>
-              <input id="c2" type="checkbox">
-              <label for="c2">Interest2</label>
-            </li>
-            <li>
-              <input id="c3" type="checkbox">
-              <label for="c3">Interest3</label>
-            </li>
-            <li>
-              <input id="c4" type="checkbox">
-              <label for="c4">Interest4</label>
-            </li>
-          </ul>
-        </div><!-- End selector -->
-      </div> <!-- End Col -->
-    </div> <!-- End Row --> 
 
   </div> <!-- End container -->
 

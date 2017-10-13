@@ -6,9 +6,36 @@ body{
 	background-color: #eaece5;
 }
 
+/* ====================NAVBAR=====================*/
+
 .navbar{
 	background-color: #b2c2bf;
+  padding: 15px;
+  border-bottom: solid #3b3a30 5px;
 }
+
+#icon-logo{
+
+}
+
+.member-name{
+  font-size:25px;
+}
+
+#search-bar{
+  
+}
+
+#submit-btn{
+  margin: 0 5px;
+}
+
+#logout-btn{
+  color: #3b3a30;
+  font-size: 20px;
+}
+
+/* ===============INTEREST WHEEL===================*/
 
 .selector,
 .selector button {
