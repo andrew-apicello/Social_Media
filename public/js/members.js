@@ -6,7 +6,7 @@ $(document).ready(function() {
 
   });  
 
-  var nbOptions = 5; // number of menus
+  var nbOptions = 4; // number of menus
 		var angleStart = -360; // start angle
  
 		// jquery rotate animation
