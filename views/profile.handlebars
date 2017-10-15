@@ -1,3 +1,4 @@
+<div class="wrapper">
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -29,41 +30,58 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-  <div class="container">
+  <!-- ============= START PROFILE BODY ================== -->
 
-    <div class="row">
-      <div class="col-lg-12">
-        <h2>Welcome {{name}}</h2>
-      </div> <!-- End col -->
-    </div> <!-- End Row -->
+    <div class="container">
 
-    <hr>
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-lg-12">
+                  <h1><span class="member-name" id="name-header"></span></h1>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-5">
+                  <img src="https://scontent-iad3-1.xx.fbcdn.net/v/t1.0-9/12032157_10205410801652914_3605275257294242552_n.jpg?oh=07cc81a1aa1b2d90cbb1bfda284fe635&oe=5A7D334A" id="profile-img">
+                </div>
+                <div class="col-lg-6">
+                  <h5>Location: </h5>
+                  <h5>Occupation: </h5>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, molestias! Nulla iure blanditiis, vitae non, veniam quaerat nam temporibus reprehenderit iusto quos, veritatis architecto numquam! Corporis maxime, quisquam fugit mollitia!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> <!-- End col -->
+        
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <div class="interests">
+            <button href="#">Interest 1!</button>
+            <button href="#">interest 2!</button>
+            <button href="#">Interest 3!</button>
+            <button href="#">Interest 4!</button>
+          </div><!-- End selector -->
+        </div>
+      </div> <!-- End Row -->
 
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="selector">
-          <button>Explore your interests!</button>
-          <ul>
-            <li>
-              <input id="c1" type="checkbox">
-              <label for="c1"><a href="#">Interest</a>1</label>
-            </li>
-            <li>
-              <input id="c2" type="checkbox">
-              <label for="c2">Interest2</label>
-            </li>
-            <li>
-              <input id="c3" type="checkbox">
-              <label for="c3">Interest3</label>
-            </li>
-            <li>
-              <input id="c4" type="checkbox">
-              <label for="c4">Interest4</label>
-            </li>
-          </ul>
-        </div><!-- End selector -->
-      </div> <!-- End Col -->
-    </div> <!-- End Row --> 
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12" id="chatBox">
+          <ul id="messages"></ul>
+            <form action="" id="chatForm">
+              <input id="sendMessage" autocomplete="off"/><button id="sendButton">Send</button>
+            </form>
+        </div> <!-- End col -->
+      </div> <!-- End Row -->
 
-  </div> <!-- End container -->
+    </div> <!-- End container -->
+
+    <footer>
+        Social Media 2017
+    </footer>
+
+  </div> <!-- End Wrapper -->
+
   <script type="text/javascript" src="js/members.js"></script>
