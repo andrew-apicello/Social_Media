@@ -1,25 +1,77 @@
-*{
-	border: solid, 1px, black;
-}
 
 body{
 	background-color: #eaece5;
 }
 
-.navbar{
-	background-color: #b2c2bf;
+.wrapper {
+  height: auto !important;
+  height: 100%;
+  min-height: 100%;
+  margin: 0 auto -100px;
 }
 
-.selector,
-.selector button {
+.container {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  clear: both;
+}
+
+/* ====================NAVBAR=====================*/
+
+.navbar{
+	background-color: #b2c2bf;
+  padding: 15px 0 0 50px;
+  border-bottom: solid #3b3a30 5px;
+}
+
+.member-name{
+  font-size:25px;
+}
+
+#submit-btn{
+  margin: 0 25px 0 5px;
+}
+
+#logout-btn{
+  color: #3b3a30;
+  font-size: 20px;
+}
+
+/* ============== User info section ===============*/
+.panel{
+  background:#b2c2bf;
+  padding: 0 0 20px 20px;
+}
+
+.panel h1{
+  margin-bottom: 20px;
+}
+
+#name-header{
+  font-size:40px;
+  font-weight:500;
+  margin-bottom: 40px;
+}
+
+
+#profile-img{
+  width:250px;
+  height: 250px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* ===============INTEREST BUTTONS===================*/
+
+.interests,
+.interests button {
   font-family: 'Oswald', sans-serif;
   font-weight: 300;
 }
 
-.selector button {
-  position: relative;
-  width: 100%;
-  height: 100%;
+.interests button {
+  width: 150px;
+  height: 150px;
   padding: 10px;
   background: #3b3a30;
   border-radius: 50%;
@@ -28,89 +80,27 @@ body{
   font-size: 20px;
   cursor: pointer;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
-  transition: all .1s;
+  margin: 20px;
 }
 
-.selector button:hover { 
-	background: #3071a9; 
+.interests button:hover { 
+    background: #847567; 
 }
 
-.selector button:focus { 
+.interests button:focus { 
 	outline: none; 
 }
 
-.selector {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 140px;
-  height: 140px;
-  margin-top: -70px;
-  margin-left: -70px;
+.interests{
+  width:80%;
 }
 
-.selector ul {
-  position: absolute;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  top: -20px;
-  right: -20px;
-  bottom: -20px;
-  left: -20px;
-}
+/* ========HIDE/SHOW PANEL ========*/
 
-.selector li {
-  position: absolute;
-  width: 0;
-  height: 100%;
-  margin: 0 50%;
-  -webkit-transform: rotate(-360deg);
-  transition: all 0.8s ease-in-out;
-}
-
-.selector li input { 
-	display: none; 
-}
-
-.selector li input + label {
-  position: absolute;
-  left: 50%;
-  bottom: 100%;
-  width: 0;
-  height: 0;
-  line-height: 1px;
-  margin-left: 0;
-  background: #fff;
-  border-radius: 50%;
-  text-align: center;
-  font-size: 1px;
-  overflow: hidden;
-  cursor: pointer;
-  box-shadow: none;
-  transition: all 0.8s ease-in-out, color 0.1s, background 0.1s;
-}
-
-.selector li input + label:hover { 
-	background: #f0f0f0; 
-}
-
-.selector li input:checked + label {
-  background: #5cb85c;
-  color: white;
-}
-
-.selector li input:checked + label:hover { 
-	background: #449d44; 
-}
-
-.selector.open li input + label {
-  width: 80px;
-  height: 80px;
-  line-height: 80px;
-  margin-left: -40px;
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
-  font-size: 14px;
+#toggle-panel {
+    padding: 30px;
+    display: none;
+    margin-bottom:150px;
 }
 
 /*======= FOOTER ========*/
@@ -120,14 +110,19 @@ footer,
 }
 
 footer {
+  position:fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
   padding: 30px 0;
   clear: both;
   font-size: 12px;
   color: #3b3a30;
   text-align: center;
   background: #b2c2bf;
-  border-top: 8px solid #3b3a30;
+  border-top: 5px solid #3b3a30;
 }
+
 
 
 
