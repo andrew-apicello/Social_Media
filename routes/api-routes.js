@@ -54,4 +54,15 @@ module.exports = function(app) {
     }
   });
 
+    app.get("/api/user_data/:name", function(req, res) {
+    db.User.findOne({
+      where: {
+        name: req.params.name
+      }
+    })
+    .then(function(result) {
+      res.json(result);
+    });
+  });
+
 };

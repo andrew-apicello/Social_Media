@@ -95,15 +95,13 @@ body{
   width:80%;
 }
 
-/*.interests {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 140px;
-  height: 140px;
-  margin-top: -70px;
-  margin-left: -70px;
-}*/
+/* ========HIDE/SHOW PANEL ========*/
+
+#toggle-panel {
+    padding: 30px;
+    display: none;
+    margin-bottom:150px;
+}
 
 /*======= FOOTER ========*/
 footer,
@@ -112,7 +110,7 @@ footer,
 }
 
 footer {
-  position:absolute;
+  position:fixed;
   right: 0;
   bottom: 0;
   left: 0;
