@@ -4,11 +4,11 @@ $(document).ready(function() {
   var nameInput = $("input#name-input");
   var emailInput = $("input#email-input");
   var occupationInput = $("input#occupation-input");
-  var locationInput = $("input#location-input");
-  var interest1Input =$("input#interest1-input");
-  var interest2Input =$("input#interest2-input");
-  var interest3Input =$("input#interest3-input");
-  var interest4Input =$("input#interest4-input");
+  var locationInput = $("#location-input");
+  var interest1Input =$("#interest1-input");
+  var interest2Input =$("#interest2-input");
+  var interest3Input =$("#interest3-input");
+  var interest4Input =$("#interest4-input");
   var passwordInput = $("input#password-input");
 
   // When the signup button is clicked, we validate the email and password are not blank

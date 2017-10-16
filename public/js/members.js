@@ -15,11 +15,6 @@ var username;
     $(".member-interest3").text(data.interest3);
     $(".member-interest4").text(data.interest4);
 
-    console.log(data.interest1);
-    console.log(data.interest2);
-    console.log(data.interest3);
-    console.log(data.interest4);
-
 		//toggle effect when clicking 
 		$(".flip").click(function(){
 		  $("#toggle-panel").slideToggle("slow");
@@ -70,8 +65,7 @@ var username;
 	var socket = io();
 
 	function setUsername() {
-		console.log("Before socket.emit:"+username)
-		socket.emit('set-username', username);	
+		socket.emit('set-username', username);
 	}
 
 	$('#chatForm').submit(function(){
