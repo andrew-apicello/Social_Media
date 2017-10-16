@@ -12,7 +12,7 @@ MySQLStore = require('connect-mysql')(session),
       config: {
         user: 'root', 
         password: '', 
-        database: 'social_media_testDB' 
+        database: 'socialmedia_db' 
       }
     };
 
@@ -45,11 +45,20 @@ io.use(passportSocketIo.authorize({
   fail:         onAuthorizeFail,     // *optional* callback on fail/error - read more below 
 }));
 
+
+
 io.on('connection', function(socket){
+
+  console.log('hello');
 
 	 socket.on('set-username', function(username) {
 	    socket.username = username;
 	});
+
+    socket.on('room', function(room) {
+        console.log(room);
+        socket.join(room);
+    });
 
   	socket.on('chat message', function(msg){
     	io.emit('chat message', {
@@ -63,6 +72,14 @@ io.on('connection', function(socket){
     });
 
   });
+
+room = "abc123";
+io.sockets.in(room).emit('message', 'what is going on, party people?');
+
+// this message will NOT go to the client defined above
+io.sockets.in('foobar').emit('message', 'anyone in this room yet?');
+
+
 
 function onAuthorizeSuccess(data, accept){
   console.log('successful connection to socket.io');
