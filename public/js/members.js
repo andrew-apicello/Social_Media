@@ -70,8 +70,11 @@ var username;
 
 	$('#chatForm').submit(function(){
 	  event.preventDefault();
+	  if ($("#sendMessage").val() == ""){
+	  	return false;
+	  }
 	  socket.emit('chat message', $('#sendMessage').val());
-	  $('#sendMessage').val('');
+	  $('#sendMessage').val("");
 	  return false;
 		});
 
