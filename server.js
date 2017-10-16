@@ -11,7 +11,7 @@ MySQLStore = require('connect-mysql')(session),
     options = {
       config: {
         user: 'root', 
-        password: '', 
+        password: 'password', 
         database: 'social_media_testDB' 
       }
     };
