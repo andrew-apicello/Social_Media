@@ -77,4 +77,27 @@ module.exports = function(app) {
     });
   });
 
-};
+ app.get("/api/allFeed", function(req, res) {
+
+        db.Feed.findAll({}).then(function(results) {
+
+            res.json(results);
+        });
+  });
+
+  app.post("/api/newFeed", function(req, res) {
+
+    console.log("Test-Post Data: ");
+    console.log(req.body);
+
+    db.Feed.create({
+        author: req.body.author,
+        body: req.body.body,
+        created_at: req.body.created_at
+    }).then(function(results){
+
+          res.end();
+    })
+  });
+
+}; //End module.exports

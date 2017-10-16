@@ -61,7 +61,51 @@ var username;
 		 
 		setTimeout(function() { toggleOptions('.selector'); }, 100);
 
- 
+ 	//Feed on click
+  $('#post-submit').on('click', function(event) {
+      event.preventDefault();
+
+      var newPost = {
+          author: username,
+          body: $('#post-field').val().trim(),
+          created_at: moment().format('YYYY-MM-DD HH:mm:ss')
+      };
+
+      console.log(newPost);
+
+    $.post('api/newFeed', newPost).done(function() {
+
+        var row = $('<div>');
+        row.addClass('post');
+
+        row.append("<p>" + newPost.author + " posted: </p>");
+        row.append("<p>" + newPost.body + "</p>");
+        row.append("<p>At " + moment(newPost.created_at).format("h:mma on dddd") + "</p>");
+
+        $("#post-area").prepend(row);
+    	});
+
+	$("#post-field").val("");
+	});
+
+    $.get("/api/allFeed", function(data) {
+
+        if (data.length !== 0) {
+
+            for (var i = 0; i < data.length; i++) {
+
+                var row = $("<div>");
+                row.addClass("post");
+
+                row.append("<p>" + data[i].author + " posted.. </p>");
+                row.append("<p>" + data[i].body + "</p>");
+                row.append("<p>At " + moment(data[i].created_at).format("h:mma on dddd") + "</p>");
+
+                $("#post-area").prepend(row);
+            }
+        }
+    });
+
 	var socket = io();
 
 	function setUsername() {
@@ -83,5 +127,27 @@ var username;
 
 	  $("#messages").animate({scrollTop: $('#messages').height()}, 1000);
 	});
+
+	//Change profile pic script
+    var readURL = function(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('.profile-img').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $(".file-upload").on('change', function() {
+        readURL(this);
+    });
+
+    $(".upload-btn").on('click', function() {
+        event.preventDefault();
+        $(".file-upload").click();
+    });
+    //End profile pic script
 
 });

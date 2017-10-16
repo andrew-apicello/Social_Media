@@ -91,11 +91,30 @@ body{
   margin-bottom: 40px;
 }
 
-
-#profile-img{
+.profile-img{
   width:250px;
   height: 250px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
+}
+
+.upload-btn{
+
+}
+
+.file-upload {
+    display: none;
+}
+
+/* =================FEED AREA======================*/
+
+#feed {
+    background-color: #eee;
+    height: 400px;
+    overflow: scroll;
+}
+
+.post{
+    color: black
 }
 
 /* ===============INTEREST BUTTONS===================*/
