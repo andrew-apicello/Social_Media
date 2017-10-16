@@ -58,10 +58,13 @@ io.on('connection', function(socket){
     	});
   	});
 
+  socket.on('connect', function() {
+        socket.broadcast.to(socket.room).emit('notice', socket.username + ' has entered the room');
+    });
+
 	socket.on('disconnect', function() {
         socket.broadcast.to(socket.room).emit('notice', socket.username + ' has left the room');
     });
-
   });
 
 function onAuthorizeSuccess(data, accept){

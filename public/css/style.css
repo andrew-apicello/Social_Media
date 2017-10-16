@@ -24,6 +24,11 @@ body{
   border-bottom: solid #3b3a30 5px;
 }
 
+#loginButton {
+  right: 2%;
+  bottom: 0;
+}
+
 .member-name{
   font-size:25px;
 }
@@ -35,6 +40,39 @@ body{
 #logout-btn{
   color: #3b3a30;
   font-size: 20px;
+}
+
+/* ============== User Signup Page ===============*/
+
+#select:invalid {
+  color: #C8C8C8;
+}
+
+#interest1-input,
+#interest3-input{
+  width: 49%;
+  padding: 6px;
+  margin-bottom: 5px;
+  border-color: #EAEAEA;
+  border-radius: 5px;
+}
+
+#interest2-input,
+#interest4-input{
+  float: right;
+  width: 49%;
+  padding: 6px;
+  margin-bottom: 5px;
+  border-color: #EAEAEA;
+  border-radius: 5px;
+}
+
+#location-input{
+  width: 100%;
+  padding: 6px;
+  margin-bottom: 5px;
+  border-color: #EAEAEA;
+  border-radius: 5px;
 }
 
 /* ============== User info section ===============*/
@@ -53,11 +91,30 @@ body{
   margin-bottom: 40px;
 }
 
-
-#profile-img{
+.profile-img{
   width:250px;
   height: 250px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
+}
+
+.upload-btn{
+
+}
+
+.file-upload {
+    display: none;
+}
+
+/* =================FEED AREA======================*/
+
+#feed {
+    background-color: #eee;
+    height: 400px;
+    overflow: scroll;
+}
+
+.post{
+    color: black
 }
 
 /* ===============INTEREST BUTTONS===================*/
