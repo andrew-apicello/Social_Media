@@ -94,15 +94,13 @@ body{
   width:80%;
 }
 
-/*.interests {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 140px;
-  height: 140px;
-  margin-top: -70px;
-  margin-left: -70px;
-}*/
+/* ========HIDE/SHOW PANEL ========*/
+
+#toggle-panel {
+    padding: 30px;
+    display: none;
+    margin-bottom: 2%;
+}
 
 /*======= CHATBOX ======*/
 #chatBox {
@@ -114,7 +112,7 @@ body{
   height: 300px;
   max-height: 300px;
   width: 60%;
-  display: block;
+  display: none;
   margin: 2% auto;
   border-color: black;
   border-style: solid;
@@ -181,6 +179,8 @@ footer {
   background: #b2c2bf;
   border-top: 5px solid #3b3a30;
 }
+
+/*======= MEDIA QUERIES ========*/
 
 @media (max-width: 1048px) {
 

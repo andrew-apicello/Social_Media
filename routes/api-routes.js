@@ -21,7 +21,13 @@ module.exports = function(app) {
     db.User.create({
       name: req.body.name,
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      occupation: req.body.occupation,
+      location: req.body.location,
+      interest1: req.body.interest1,
+      interest2: req.body.interest2,
+      interest3: req.body.interest3,
+      interest4: req.body.interest4
     }).then(function() {
       res.redirect(307, "/api/login");
     }).catch(function(err) {
@@ -49,8 +55,26 @@ module.exports = function(app) {
       res.json({
         name: req.user.name,
         email: req.user.email,
-        id: req.user.id
+        id: req.user.id,
+        occupation: req.user.occupation,
+        location: req.user.location,
+        interest1: req.user.interest1,
+        interest2: req.user.interest2,
+        interest3: req.user.interest3,
+        interest4: req.user.interest4
       });
     }
   });
+
+    app.get("/api/user_data/:name", function(req, res) {
+    db.User.findOne({
+      where: {
+        name: req.params.name
+      }
+    })
+    .then(function(result) {
+      res.json(result);
+    });
+  });
+
 };
