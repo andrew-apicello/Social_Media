@@ -15,11 +15,6 @@ var username;
     $(".member-interest3").text(data.interest3);
     $(".member-interest4").text(data.interest4);
 
-    console.log(data.interest1);
-    console.log(data.interest2);
-    console.log(data.interest3);
-    console.log(data.interest4);
-
 		//toggle effect when clicking 
 		$(".flip").click(function(){
 		  $("#toggle-panel").slideToggle("slow");
@@ -66,18 +61,64 @@ var username;
 		 
 		setTimeout(function() { toggleOptions('.selector'); }, 100);
 
- 
+ 	//Feed on click
+  $('#post-submit').on('click', function(event) {
+      event.preventDefault();
+
+      var newPost = {
+          author: username,
+          body: $('#post-field').val().trim(),
+          created_at: moment().format('YYYY-MM-DD HH:mm:ss')
+      };
+
+      console.log(newPost);
+
+    $.post('api/newFeed', newPost).done(function() {
+
+        var row = $('<div>');
+        row.addClass('post');
+
+        row.append("<p>" + newPost.author + " posted: </p>");
+        row.append("<p>" + newPost.body + "</p>");
+        row.append("<p>At " + moment(newPost.created_at).format("h:mma on dddd") + "</p>");
+
+        $("#post-area").prepend(row);
+    	});
+
+	$("#post-field").val("");
+	});
+
+    $.get("/api/allFeed", function(data) {
+
+        if (data.length !== 0) {
+
+            for (var i = 0; i < data.length; i++) {
+
+                var row = $("<div>");
+                row.addClass("post");
+
+                row.append("<p>" + data[i].author + " posted.. </p>");
+                row.append("<p>" + data[i].body + "</p>");
+                row.append("<p>At " + moment(data[i].created_at).format("h:mma on dddd") + "</p>");
+
+                $("#post-area").prepend(row);
+            }
+        }
+    });
+
 	var socket = io();
 
 	function setUsername() {
-		console.log("Before socket.emit:"+username)
-		socket.emit('set-username', username);	
+		socket.emit('set-username', username);
 	}
 
 	$('#chatForm').submit(function(){
 	  event.preventDefault();
+	  if ($("#sendMessage").val() == ""){
+	  	return false;
+	  }
 	  socket.emit('chat message', $('#sendMessage').val());
-	  $('#sendMessage').val('');
+	  $('#sendMessage').val("");
 	  return false;
 		});
 
@@ -87,6 +128,7 @@ var username;
 	  $("#messages").animate({scrollTop: $('#messages').height()}, 1000);
 	});
 
+<<<<<<< HEAD
 	console.log('chat script connected')
 
 // let's assume that the client page, once rendered, knows what room it wants to join
@@ -100,5 +142,28 @@ var username;
 	socket.on('message', function(data) {
 	   console.log('Incoming message:', data);
 });
+=======
+	//Change profile pic script
+    var readURL = function(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('.profile-img').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $(".file-upload").on('change', function() {
+        readURL(this);
+    });
+
+    $(".upload-btn").on('click', function() {
+        event.preventDefault();
+        $(".file-upload").click();
+    });
+    //End profile pic script
+>>>>>>> origin
 
 });
