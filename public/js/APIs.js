@@ -18,7 +18,6 @@ for (var i=0;i<categoryArray.length;i++){
 
 var url = " https://newsapi.org/v1/articles?source=" + source + "&sortBy=top&apiKey=" + apiKey ;
 
-
 //pass the name of the category as a this object
 $.ajax({
 	url: url,
@@ -32,7 +31,7 @@ $.ajax({
 		topHeadlines.append("Top " + categorySelection + " Headlines");
 		$("#top-headlines").append(topHeadlines);
 
-    	var articleOneTitle = $("<h3>");
+    	var articleOneTitle = $("<a href="+result.articles[0].url+"><h3></h3></a>");
     	articleOneTitle.append(result.articles[0].title);
 		$("#articleOne").append(articleOneTitle);
 		var articleOneAuthor = $("<h5>");
@@ -40,7 +39,7 @@ $.ajax({
 		$("#articleOne").append(articleOneAuthor);
 		$("#articleOne").append(result.articles[0].description);
 
-    	var articleTwoTitle = $("<h3>");
+    	var articleTwoTitle = $("<h3><a href="+result.articles[0].url+">");
     	articleTwoTitle.append(result.articles[1].title);
 		$("#articleTwo").append(articleTwoTitle);
 		var articleTwoAuthor = $("<h5>");
@@ -48,7 +47,7 @@ $.ajax({
 		$("#articleTwo").append(articleTwoAuthor);
 		$("#articleTwo").append(result.articles[1].description);
 
-		var articleThreeTitle = $("<h3>");
+		var articleThreeTitle = $("<h3><a href="+result.articles[0].url+">");
     	articleThreeTitle.append(result.articles[2].title);
 		$("#articleThree").append(articleThreeTitle);
 		var articleThreeAuthor = $("<h5>");
@@ -63,6 +62,7 @@ $.ajax({
 		$("#articleOne").empty();
 		$("#articleTwo").empty();
 		$("#articleThree").empty();
+		$("#messages").empty();
 
 		flipped = false;
 	}
