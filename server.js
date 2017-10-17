@@ -47,26 +47,40 @@ io.use(passportSocketIo.authorize({
   fail:         onAuthorizeFail,     // *optional* callback on fail/error - read more below 
 }));
 
-io.on('connection', function(socket){
+io.sockets.on('connection', function(socket){
+  var exRoom;
 
    socket.on('set-username', function(username) {
       socket.username = username;
   });
 
+   socket.on('room', function(room){
+      if(exRoom == room){
+        socket.leave(room)
+      } else {
+      socket.join(room)
+      exRoom = room;
+      console.log(socket.username+" joined the "+room+" chatroom.")
+      }
+   })
+
     socket.on('chat message', function(msg){
-      io.emit('chat message', {
+      io.sockets.in(exRoom).emit('chat message', {
         username: socket.username,
         message: msg
       });
     });
 
   socket.on('connect', function() {
-        socket.broadcast.to(socket.room).emit('notice', socket.username + ' has entered the room');
+    console.log(socket.username+ " connected to chat.")
+    // socket.broadcast.to(exRoom).emit("---"+ socket.username + ' has entered the room.---');
     });
 
   socket.on('disconnect', function() {
-        socket.broadcast.to(socket.room).emit('notice', socket.username + ' has left the room');
+    console.log(socket.username+ " disconnected from chat.")
+    // socket.broadcast.to(exRoom).emit("---"+ socket.username + ' has left the room.---');
     });
+
   });
 
 function onAuthorizeSuccess(data, accept){
