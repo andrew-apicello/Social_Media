@@ -5,6 +5,8 @@ var session = require("express-session");
 var cookieParser = require('cookie-parser');
 // Requiring passport as we've configured it
 var passport = require("./config/passport");
+var pat = require("path");
+var fs = require("fs");
 
 //Requiring MySQLSTORE to store our chat session and data
 MySQLStore = require('connect-mysql')(session),
@@ -20,8 +22,14 @@ MySQLStore = require('connect-mysql')(session),
 var PORT = process.env.PORT || 8080;
 var db = require("./models");
 
+
+
 // Creating express app and configuring middleware needed for authentication
 var app = express();
+
+app.get("favicon.ico", function(req, res) {
+  res.sendFile(path.join(__dirname, "/favicon.ico"));
+});
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

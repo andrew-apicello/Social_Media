@@ -43,14 +43,15 @@ $(document).ready(function() {
             var row = $('<div>');
             row.addClass('post');
 
+            row.append("<p>" + moment(newPost.created_at).format("dddd MMM Do YYYY - h:mma:") + "</p>");
+
             row.append("<strong><p>" + newPost.author + ": </strong>" + newPost.body + "</p>");
-            row.append("<p>At " + moment(newPost.created_at).format("h:mma on dddd") + "</p>");
 
-            $("#post-area").preppend(row);
-            });
+              $("#post-area").prepend(row);
+              });
 
-            $("#post-field").val("");
-            });
+              $("#post-field").val("");
+              });
 
         $.get("/api/allFeed", function(data) {
 
@@ -103,6 +104,7 @@ $(document).ready(function() {
 
           reader.onload = function(e) {
               $('.profile-img').attr('src', e.target.result);
+              storePicture(e);
           }
           reader.readAsDataURL(input.files[0]);
       }
@@ -118,5 +120,10 @@ $(document).ready(function() {
     $(".file-upload").click();
   });
 
+  function storePicture(target){
+
+    // send target to database
+
+  }
 
 }); //End doc ready

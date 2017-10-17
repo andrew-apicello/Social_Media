@@ -134,7 +134,7 @@ body{
 
 /* =================FEED AREA======================*/
 #feed-container{
-      border: outset 5px;  
+  border: outset 5px;  
 }
 #feed {
   height: 265px;
@@ -154,11 +154,16 @@ body{
 
 .post{
   color: black
-  padding: 10px 0px 10px 0px;
+  padding: 0px 0px 4px 0px;
 }
 
 .post:nth-child(even) { 
   background-color: #dbdbdb; 
+  padding: 0px 0px 4px 0px;
+}
+
+.post p{
+  padding-top: 0px;
 }
 
 .post> *
@@ -190,7 +195,7 @@ body{
   font-size: 20px;
   cursor: pointer;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
-  margin: 20px 60px;
+  margin: 20px 70px;
 }
 
 .interests button:hover { 
@@ -208,52 +213,52 @@ body{
 /* ========HIDE/SHOW PANEL ========*/
 
 #toggle-panel {
-    padding: 30px;
+    padding: 20px;
     display: none;
+    float:left;
     margin-bottom: 2%;
     background-color:#9fa9a3 !important;
+    position:relative;
 }
 
 /*======= CHATBOX ======*/
+#empty-space{
+  height:200px;
+}
+
 #chatBox {
-  float: none;
+ /* float: right;*/
   font: 13px;
   font-family: Helvetica, Arial;
   background: white;
-  padding: 0;
+  padding: 10px;
   height: 300px;
   max-height: 300px;
-  width: 60%;
   display: none;
-  margin: 2% auto;
-  border-color: black;
-  border-style: solid;
-  border-width: 2px;
+  margin: 0;
+  border: outset 5px;
+/*  position: fixed;
+  bottom: 70px;
+  right: 10px;*/
 }
 
 #chatBox form {
   position: absolute;
   bottom: 0;
+  left:0;
   width: 100%;
-  border-top-color: black;
-  border-top-style: solid;
-  border-top-width: 2px;
+  border: outset 2px;
 }
 
 #chatBox form input { 
   border: 0; 
   padding: 10px; 
-  width: 90%;
+  width: 89%;
 }
 
 #chatBox form button { 
   width: 10%; 
-  color: black;
-  background: gray;
-  border-top-style: none;
-  border-left-color: black;
-  border-left-width: 2px;
-  padding: 10px; 
+  padding: 12px; 
 }
 
 #messages { 
@@ -275,7 +280,7 @@ body{
 /*======= FOOTER ========*/
 footer,
 .push {
-  height: 80px;
+  height: 60px;
 }
 
 footer {
@@ -283,7 +288,7 @@ footer {
   right: 0;
   bottom: 0;
   left: 0;
-  padding: 30px 0;
+  padding: 20px 0;
   clear: both;
   font-size: 12px;
   color: #3b3a30;
