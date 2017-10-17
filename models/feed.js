@@ -18,4 +18,8 @@ module.exports = function(sequelize, DataTypes) {
    });
     return Feed;
 
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> origin

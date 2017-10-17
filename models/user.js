@@ -67,6 +67,10 @@ module.exports = function(sequelize, DataTypes) {
   });
   return User;
 
+<<<<<<< HEAD
   
 
 }; //End module.exports
+=======
+}; //End module.exports
+>>>>>>> origin
