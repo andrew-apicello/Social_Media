@@ -29,38 +29,6 @@ var username;
 
 	});
 
-  var nbOptions = 4; // number of menus
-	var angleStart = -360; // start angle
- 
-		// jquery rotate animation
-		function rotate(li,d) {
-		  $({d:angleStart}).animate({d:d}, {
-		   step: function(now) {
-		    $(li)
-		      .css({ transform: 'rotate('+now+'deg)' })
-		      .find('label')
-		       .css({ transform: 'rotate('+(-now)+'deg)' });
-		   }, duration: 0
-		  });
-		}
- 
-		// show / hide the options
-		function toggleOptions(s) {
-		  $(s).toggleClass('open');
-		  var li = $(s).find('li');
-		  var deg = $(s).hasClass('half') ? 180/(li.length-1) : 360/li.length;
-		  for(var i=0; i<li.length; i++) {
-		   var d = $(s).hasClass('half') ? (i*deg)-90 : i*deg;
-		   $(s).hasClass('open') ? rotate(li[i],d) : rotate(li[i],angleStart);
-		  }
-		}
- 
-		$('.selector button').click(function(e) {
-		  toggleOptions($(this).parent());
-		});
-		 
-		setTimeout(function() { toggleOptions('.selector'); }, 100);
-
  	//Feed on click
   $('#post-submit').on('click', function(event) {
       event.preventDefault();
@@ -106,6 +74,7 @@ var username;
         }
     });
 
+//============ Socket Chat ===============
 	var socket = io();
 
 	function setUsername() {
@@ -128,26 +97,27 @@ var username;
 	  $("#messages").animate({scrollTop: $('#messages').height()}, 1000);
 	});
 
-	//Change profile pic script
-    var readURL = function(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
+  //Change profile pic script
+  var readURL = function(input) {
+      if (input.files && input.files[0]) {
+          var reader = new FileReader();
 
-            reader.onload = function(e) {
-                $('.profile-img').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
+          reader.onload = function(e) {
+              $('.profile-img').attr('src', e.target.result);
+          }
+          reader.readAsDataURL(input.files[0]);
+      }
+  }
 
-    $(".file-upload").on('change', function() {
-        readURL(this);
-    });
+  $(".file-upload").on('change', function() {
+      readURL(this);
+  });
 
-    $(".upload-btn").on('click', function() {
-        event.preventDefault();
-        $(".file-upload").click();
-    });
-    //End profile pic script
+  $(".upload-btn").on('click', function() {
+    
+      event.preventDefault();
+    $(".file-upload").click();
+  });
 
-});
+
+}); //End doc ready
