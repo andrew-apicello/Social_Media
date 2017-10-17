@@ -31,7 +31,7 @@ $.ajax({
 		topHeadlines.append("Top " + categorySelection + " Headlines");
 		$("#top-headlines").append(topHeadlines);
 
-    	var articleOneTitle = $("<a href="+result.articles[0].url+"><h3></h3></a>");
+    	var articleOneTitle = $("<h3>");
     	articleOneTitle.append(result.articles[0].title);
 		$("#articleOne").append(articleOneTitle);
 		var articleOneAuthor = $("<h5>");
@@ -39,7 +39,7 @@ $.ajax({
 		$("#articleOne").append(articleOneAuthor);
 		$("#articleOne").append(result.articles[0].description);
 
-    	var articleTwoTitle = $("<h3><a href="+result.articles[0].url+">");
+    	var articleTwoTitle = $("<h3>");    	
     	articleTwoTitle.append(result.articles[1].title);
 		$("#articleTwo").append(articleTwoTitle);
 		var articleTwoAuthor = $("<h5>");
@@ -47,13 +47,17 @@ $.ajax({
 		$("#articleTwo").append(articleTwoAuthor);
 		$("#articleTwo").append(result.articles[1].description);
 
-		var articleThreeTitle = $("<h3><a href="+result.articles[0].url+">");
+		var articleThreeTitle = $("<h3>");
     	articleThreeTitle.append(result.articles[2].title);
 		$("#articleThree").append(articleThreeTitle);
 		var articleThreeAuthor = $("<h5>");
 		articleThreeAuthor.append(result.articles[2].author)
 		$("#articleThree").append(articleThreeAuthor);
 		$("#articleThree").append(result.articles[2].description);
+
+		articleOneTitle.wrap("<a target='_blank' href="+result.articles[0].url+">")
+		articleTwoTitle.wrap("<a target='_blank' href="+result.articles[1].url+">")
+		articleThreeTitle.wrap("<a target='_blank' href="+result.articles[2].url+">")
 
 	flipped = true;
 	

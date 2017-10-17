@@ -9,7 +9,7 @@ var room;
 $.get("/api/user_data").then(function(data) {
 	username = data.name;
 	setUsername();
-  $(".member-name").text(data.name);
+  $(".member-name").text(data.name);  
   $(".member-occupation").text(data.occupation);
   $(".member-location").text(data.location);
   $(".member-interest1").text(data.interest1);
@@ -19,47 +19,47 @@ $.get("/api/user_data").then(function(data) {
   
   });
 
-	//toggle effect when clicking 
-	$(".flip").click(function(){
-	  $("#toggle-panel").slideToggle("slow");
-	  $("#chatBox").slideToggle("slow");
-    room = $(this).text();
-    socket.emit('room', room);
+//toggle effect when clicking 
+$(".flip").click(function(){
+  $("#toggle-panel").slideToggle("slow");
+  $("#chatBox").slideToggle("slow");
+  room = $(this).text();
+  socket.emit('room', room);
 
-    });
-
-	//Feed on click
-  $('#post-submit').on('click', function(event) {
-      event.preventDefault();
-
-      var newPost = {
-          author: username,
-          body: $('#post-field').val().trim(),
-          created_at: moment().format('YYYY-MM-DD HH:mm:ss')
-      };
-
-      console.log(newPost);
-
-    $.post('api/newFeed', newPost).done(function() {
-
-        var row = $('<div>');
-        row.addClass('post');
-
-        row.append("<p>" + newPost.author + " posted: </p>");
-        row.append("<p>" + newPost.body + "</p>");
-        row.append("<p>At " + moment(newPost.created_at).format("h:mma on dddd") + "</p>");
-
-        $("#post-area").prepend(row);
-    	});
-
-  $("#post-field").val("");
   });
 
-    $.get("/api/allFeed", function(data) {
+//Feed on click
+$('#post-submit').on('click', function(event) {
+  event.preventDefault();
 
-      if (data.length !== 0) {
+  var newPost = {
+      author: username,
+      body: $('#post-field').val().trim(),
+      created_at: moment().format('YYYY-MM-DD HH:mm:ss')
+  };
 
-        for (var i = 0; i < data.length; i++) {
+  console.log(newPost);
+
+  $.post('api/newFeed', newPost).done(function() {
+
+      var row = $('<div>');
+      row.addClass('post');
+
+      row.append("<p>" + moment(newPost.created_at).format("dddd MMM Do YYYY - h:mma:") + "</p>");
+
+      row.append("<strong><p>" + newPost.author + ": </strong>" + newPost.body + "</p>");
+
+      $("#post-area").prepend(row);
+      });
+
+      $("#post-field").val("");
+      });
+
+  $.get("/api/allFeed", function(data) {
+
+    if (data.length !== 0) {
+
+      for (var i = 0; i < data.length; i++) {
 
           var row = $("<div>");
           row.addClass("post");
@@ -69,9 +69,9 @@ $.get("/api/user_data").then(function(data) {
           row.append("<p>At " + moment(data[i].created_at).format("h:mma on dddd") + "</p>");
 
           $("#post-area").prepend(row);
+        }
       }
-    }
-  });
+    });
 
   // ============ Socket Chat ===============
   	var socket = io.connect();
@@ -98,25 +98,33 @@ $.get("/api/user_data").then(function(data) {
 
   	});
 
-    //Change profile pic script
-    var readURL = function(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
+      //Change profile pic script
+  var readURL = function(input) {
+      if (input.files && input.files[0]) {
+          var reader = new FileReader();
 
-            reader.onload = function(e) {
-                $('.profile-img').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
+          reader.onload = function(e) {
+              $('.profile-img').attr('src', e.target.result);
+              storePicture(e);
+          }
+          reader.readAsDataURL(input.files[0]);
+      }
+  }
 
-    $(".file-upload").on('change', function() {
-        readURL(this);
-    });
+  $(".file-upload").on('change', function() {
+      readURL(this);
+  });
 
-    $(".upload-btn").on('click', function() {
-      
-    event.preventDefault();
+  $(".upload-btn").on('click', function() {
+    
+      event.preventDefault();
     $(".file-upload").click();
   });
+
+  function storePicture(target){
+
+    // send target to database
+
+  }
+
 }); //End doc ready

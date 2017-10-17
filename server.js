@@ -49,7 +49,6 @@ io.use(passportSocketIo.authorize({
 
 io.sockets.on('connection', function(socket){
   var exRoom;
-  var socket.username;
 
    socket.on('set-username', function(username) {
       socket.username = username;

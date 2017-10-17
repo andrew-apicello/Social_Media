@@ -16,19 +16,99 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="/members"><span class="member-name"></span></a></li>
-            <li><form class="navbar-form navbar-right" id="search-bar">
-              <div class="form-group">
-                <input type="text" class="form-control" id="user-search" placeholder="Search Users">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/members"><span class="member-name"></span></a></li>
+        <li><form class="navbar-form navbar-right" id="search-bar">
+          <div class="form-group">
+            <input type="text" class="form-control" id="user-search" placeholder="Search Users">
+          </div>
+          <button type="submit" class="btn btn-default" id="search-btn">Search</button>
+        </form></li>
+        <li><a class="navbar-brand" href="/logout" id="logout-btn">Logout</a></li>
+        <li>
+          <div class="container">
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Edit Interests</button>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+              <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Edit Interests</h4>
+                  </div>
+                  <div class="modal-body">
+                    <div class="w3-container">
+                      <div class="w3-dropdown-hover">
+                        <button class="w3-button w3-black member-interest1"  id="member-interest1"></button>
+                        <div class="w3-dropdown-content w3-bar-block w3-border">
+                          <option class="interestEdit" type="button" data-dismiss="modal">Business</option>
+                          <option class="interestEdit" type="button" data-dismiss="modal">Entertainment</option>
+                          <option class="interestEdit" type="button" data-dismiss="modal">Gaming</option>
+                          <option class="interestEdit" type="button" data-dismiss="modal">Music</option>
+                          <option class="interestEdit" type="button" data-dismiss="modal">Politics</option>
+                          <option class="interestEdit" type="button" data-dismiss="modal">Science and Nature</option>
+                          <option class="interestEdit" type="button" data-dismiss="modal">Sports</option>
+                          <option class="interestEdit" type="button" data-dismiss="modal">Technology</option>
+                        </div>
+                      </div>
+                      <div class="w3-dropdown-hover">
+                        <button class="w3-button w3-black member-interest2 interestEdit"  id="member-interest2"></button>
+                        <div class="w3-dropdown-content w3-bar-block w3-border">
+                          <option >Business</option>
+                          <option >Entertainment</option>
+                          <option >Gaming</option>
+                          <option >Music</option>
+                          <option >Politics</option>
+                          <option >Science and Nature</option>
+                          <option >Sports</option>
+                          <option >Technology</option>
+                        </div>
+                      </div>
+                      <div class="w3-dropdown-hover">
+                        <button class="w3-button w3-black member-interest3 interestEdit"  id="member-interest3"></button>
+                        <div class="w3-dropdown-content w3-bar-block w3-border">
+                         <option >Business</option>
+                         <option >Entertainment</option>
+                         <option >Gaming</option>
+                         <option >Music</option>
+                         <option >Politics</option>
+                         <option >Science and Nature</option>
+                         <option >Sports</option>
+                         <option >Technology</option>
+                       </div>
+                     </div>
+                     <div class="w3-dropdown-hover">
+                      <button class="w3-button w3-black member-interest4 interestEdit"  id="member-interest4"></button>
+                      <div class="w3-dropdown-content w3-bar-block w3-border">
+                        <option >Business</option>
+                        <option >Entertainment</option>
+                        <option >Gaming</option>
+                        <option >Music</option>
+                        <option >Politics</option>
+                        <option >Science and Nature</option>
+                        <option >Sports</option>
+                        <option >Technology</option>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
               </div>
-              <button type="submit" class="btn btn-default" id="search-btn">Search</button>
-            </form></li>
-            <li><a class="navbar-brand" href="/logout" id="logout-btn">Logout</a></li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-   </nav> <!-- End header -->
+            </div>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</nav> <!-- End header -->
+
 
   <!-- ============= START PROFILE BODY ================== -->
 
@@ -42,7 +122,7 @@
                 <div class="col-lg-12">
                   <h1><span class="member-name" id="name-header"></span></h1>
                 </div>
-              </div>
+              </div> {{!-- End Row --}}
 
               <div class="row">
                 <div class="col-lg-5">
@@ -56,7 +136,7 @@
                   <h5>Occupation: <span class="member-occupation" id="member-occupation"></span></h5>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, molestias! Nulla iure blanditiis, vitae non, veniam quaerat nam temporibus reprehenderit iusto quos, veritatis architecto numquam! Corporis maxime, quisquam fugit mollitia!</p>
                 </div>
-              </div>
+              </div> {{!-- End Row --}}
             </div>
           </div>
         </div> <!-- End col -->
@@ -81,7 +161,7 @@
         </div> <!-- End col -->
       </div> <!-- End Row -->
 
-      <div class="row">
+    <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="interests">
           <button href="#" class="flip"><span class="member-interest1" id="member-interest1"></button>
@@ -92,29 +172,42 @@
       </div> <!-- End col -->
     </div> {{!-- End row --}}
 
+
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-7">
+          
           <div class="panel panel-default" id="toggle-panel">
             <div class="panel-heading" id="top-headlines">
             </div>
             <div class="panel-body" id="articleDropdown">
               <div id="articleOne" class="well"></div>
               <div id="articleTwo" class="well"></div>
-              <div id="articleThree" class="well"></div>
-              </div>
+              <div id="articleThree" class="well"></div> 
+            </div>
+          </div>
+        </div> 
+
+        <div class="col-lg-5" >
+          <div class="row">
+            <div class="col-lg-12">
+              <div id="empty-space"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12" id="chatBox">
+              <ul id="messages"></ul>
+                <form action="" id="chatForm">
+                  <input id="sendMessage" autocomplete="off"/>
+                  <button class="btn btn-default" id="sendButton">Send</button>
+                </form>
             </div>
           </div>
         </div> <!-- End col -->
-      </div> <!-- End row -->
 
-      <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12" id="chatBox">
-          <ul id="messages"></ul>
-            <form action="" id="chatForm">
-              <input id="sendMessage" autocomplete="off"/><button id="sendButton">Send</button>
-            </form>
-        </div> <!-- End col -->
+
       </div> <!-- End Row -->
+       
 
     </div> <!-- End container -->
 
