@@ -104,4 +104,20 @@ module.exports = function(app) {
   });
 
 
+
+app.post("/api/updateInterests", function(req, res) {
+    console.log(req.body);
+    db.User.update({
+      interest1: req.body.interest1
+    },{
+      where: 
+        {id:req.body.id}
+    }).then(function() {
+      console.log("post got to the server side")
+
+    })
+  });
+
+
+
 }; //End module.exports
