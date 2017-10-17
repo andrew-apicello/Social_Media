@@ -22,6 +22,7 @@ var db = require("./models");
 
 // Creating express app and configuring middleware needed for authentication
 var app = express();
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
@@ -29,6 +30,7 @@ app.use(express.static("public"));
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+
 
 // initialize our socket.io/passport modules 
 var http = require('http').createServer(app);
@@ -58,10 +60,13 @@ io.on('connection', function(socket){
     	});
   	});
 
+  socket.on('connect', function() {
+        socket.broadcast.to(socket.room).emit('notice', socket.username + ' has entered the room');
+    });
+
 	socket.on('disconnect', function() {
         socket.broadcast.to(socket.room).emit('notice', socket.username + ' has left the room');
     });
-
   });
 
 function onAuthorizeSuccess(data, accept){

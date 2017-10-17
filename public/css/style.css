@@ -1,5 +1,6 @@
 body{
   background-color: #eaece5;
+  font-family: 'Oswald', sans-serif;
 }
 
 .wrapper {
@@ -12,7 +13,7 @@ body{
 .container {
   width: 100%;
   max-width: 1360px;
-  margin: 0 auto;
+  margin: 40px auto 0px auto;
   clear: both;
 }
 
@@ -20,8 +21,34 @@ body{
 
 .navbar{
   background-color: #b2c2bf;
-  padding: 15px 0 0 50px;
+  padding: 40px 0 0 50px;
   border-bottom: solid #3b3a30 5px;
+}
+
+#logo {
+  position:relative;
+  top: -53px;
+  width: 120px;
+  height: 120px;
+  padding: 10px;
+  background: #3b3a30;
+  border-radius: 50%;
+  border: 0;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#logo-txt{
+  font-weight: 300;
+  color: white;
+  font-size:60px;
+  text-align:center;
+  vertical-align:center;
+}
+
+#loginButton {
+  right: 2%;
+  bottom: 0;
 }
 
 .member-name{
@@ -37,14 +64,50 @@ body{
   font-size: 20px;
 }
 
-/* ============== User info section ===============*/
-.panel{
-  background:#b2c2bf;
-  padding: 0 0 20px 20px;
+/* ============== User Signup Page ===============*/
+
+#select:invalid {
+  color: #C8C8C8;
 }
 
-.panel h1{
-  margin-bottom: 20px;
+#interest1-input,
+#interest3-input{
+  width: 49%;
+  padding: 6px;
+  margin-bottom: 5px;
+  border-color: #EAEAEA;
+  border-radius: 5px;
+}
+
+#interest2-input,
+#interest4-input{
+  float: right;
+  width: 49%;
+  padding: 6px;
+  margin-bottom: 5px;
+  border-color: #EAEAEA;
+  border-radius: 5px;
+}
+
+#location-input{
+  width: 100%;
+  padding: 6px;
+  margin-bottom: 5px;
+  border-color: #EAEAEA;
+  border-radius: 5px;
+}
+
+/* ==============User Login Page ==================*/
+
+#login-navbar-header{
+  margin-left:70px;
+  width:100%;
+}
+
+/* ============== User info section ===============*/
+#member-info{
+  background:#b2c2bf;
+  padding: 0 0 20px 20px;
 }
 
 #name-header{
@@ -70,14 +133,39 @@ body{
 /* =================FEED AREA======================*/
 
 #feed {
-    background-color: #fff;
-    height: 400px;
-    overflow: scroll;
+  height: 265px;
+  overflow: scroll;
+  padding:0px;
+}
+
+#feed-heading{
+  background-color: #3b3a30 !important; 
+  color: white !important;
+  text-align:center; 
+}
+
+#feed-heading h4{
+  color: white !important; 
 }
 
 .post{
-    color: black
+  color: black
+  padding: 10px 0px 10px 0px;
 }
+
+.post:nth-child(even) { 
+  background-color: #dbdbdb; 
+}
+
+.post> *
+{
+    padding-left: 10px;    
+}
+
+#feed-footer{
+    background-color: #b2c2bf !important; 
+}
+
 
 /* ===============INTEREST BUTTONS===================*/
 
@@ -119,6 +207,7 @@ body{
     padding: 30px;
     display: none;
     margin-bottom: 2%;
+    background-color:#9fa9a3 !important;
 }
 
 /*======= CHATBOX ======*/

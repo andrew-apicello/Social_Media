@@ -77,7 +77,10 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/allFeed", function(req, res) {
+
+
+ app.get("/api/allFeed", function(req, res) {
+
 
         db.Feed.findAll({}).then(function(results) {
 
@@ -101,7 +104,8 @@ module.exports = function(app) {
   });
 
 
-
 }; //End module.exports
+
+
 
 
