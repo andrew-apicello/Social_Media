@@ -66,7 +66,7 @@ module.exports = function(app) {
     }
   });
 
-    app.get("/api/user_data/:name", function(req, res) {
+  app.get("/api/user_data/:name", function(req, res) {
     db.User.findOne({
       where: {
         name: req.params.name
@@ -77,7 +77,10 @@ module.exports = function(app) {
     });
   });
 
+
+
  app.get("/api/allFeed", function(req, res) {
+
 
         db.Feed.findAll({}).then(function(results) {
 
@@ -99,5 +102,6 @@ module.exports = function(app) {
           res.end();
     })
   });
+
 
 }; //End module.exports
