@@ -42,7 +42,7 @@ border: 0px solid black;
   background: b-wekit-linear-gradient(bottom right, #026670), rgba(255, 255, 255, 1));
 background: -o-linear-gradient(bottom right, #31708e, #8Fc1e3);
 background: -moz-linear-gradient(bottom right, #31708e, #8Fc1e3);
-background: linear-gradient(to bottom right, #1178c6, #13b0bf);
+background: linear-gradient(to bottom right, #31708e, #8Fc1e3);
 }
 
 #logo {
@@ -128,20 +128,10 @@ background: linear-gradient(to bottom right, #1178c6, #13b0bf);
 
 /* ============== User info section ===============*/
 #member-info{
-<<<<<<< HEAD
-  background:#edeae5;
-  /*fc3181*/
-  /*fef9c7*/
-  min-height: 395px;
-  padding: 0 0 20px 20px;
-  border-width:5px;  
-  border-style:outset;
-=======
   background:#9bb3c6;
   padding: 0 0 30px 20px;
 box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
 min-height: 385px;
->>>>>>> e4742352bbe99ce7e4bd957ae0ebc03bcf8652db
 }
 
 #name-header{
@@ -179,15 +169,8 @@ border: 0px solid black;
   color: white !important;
   text-align:center;
   background: white;
-<<<<<<< HEAD
-  background: b-wekit-linear-gradient(bottom right, #026670), rgba(255, 255, 255, 1));
-background: -o-linear-gradient(bottom right, #31708e, #8Fc1e3);
-background: -moz-linear-gradient(bottom right, #31708e, #8Fc1e3);
-background: linear-gradient(to bottom right, #13b0bf, #1178c6);
-=======
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
   border: 0px solid black;
->>>>>>> e4742352bbe99ce7e4bd957ae0ebc03bcf8652db
 }
 
 #feed-heading h4{
@@ -263,11 +246,7 @@ background: linear-gradient(to bottom right, #31708e, #8Fc1e3)
   display: none;
   float:left;
   margin-bottom: 2%;
-<<<<<<< HEAD
-  background-color:#1178c6 !important;
-=======
   background-color:#9bb3c6 !important;
->>>>>>> e4742352bbe99ce7e4bd957ae0ebc03bcf8652db
   position:relative;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
     border: 0px solid black;
@@ -287,11 +266,7 @@ background: linear-gradient(to bottom right, #31708e, #8Fc1e3)
   font-family: Helvetica, Arial;
   padding: 10px;
   height: 300px;
-<<<<<<< HEAD
-  width: 100%;
-=======
 
->>>>>>> e4742352bbe99ce7e4bd957ae0ebc03bcf8652db
   max-height: 300px;
   display: none;
   margin: 0 0 30px 0;
@@ -307,10 +282,6 @@ background: linear-gradient(to bottom right, #31708e, #8Fc1e3)
 
 #linkBoxContainer{
   padding:0;
-}
-
-#linkBoxContainer{
-  padding: 0;
 }
 
 #link-repo{
@@ -350,13 +321,8 @@ background: linear-gradient(to bottom right, #31708e, #8Fc1e3)
  font-family: Helvetica, Arial;
  background: white;
  padding: 10px;
-<<<<<<< HEAD
- height: 390px;
- max-height: 400px;
-=======
  height: 300px;
  max-height: 290px;
->>>>>>> e4742352bbe99ce7e4bd957ae0ebc03bcf8652db
  display: none;
  margin: 0;
 border-radius:5px;
@@ -417,7 +383,7 @@ border: 0px solid black;
   background: -webkit-linear-gradient(top left, #687864), rgba(255, 255, 255, 1));
 background: -o-linear-gradient(top left, #687864, rgba(255, 255, 255, 1));
 background: -moz-linear-gradient(top left, #687864, rgba(255, 255, 255, 1));
-background: linear-gradient(to bottom right, #13b0bf, #1178c6);
+background: linear-gradient(to top left, #687864, rgba(255, 255, 255, 1));
 }
 
 /*======= MEDIA QUERIES ========*/
