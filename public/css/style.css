@@ -42,7 +42,7 @@ background: linear-gradient(to bottom, rgb(254, 249, 199, .5), #f7f9fb);
   background: b-wekit-linear-gradient(bottom right, #026670), rgba(255, 255, 255, 1));
 background: -o-linear-gradient(bottom right, #31708e, #8Fc1e3);
 background: -moz-linear-gradient(bottom right, #31708e, #8Fc1e3);
-background: linear-gradient(to bottom right, #31708e, #8Fc1e3);
+background: linear-gradient(to bottom right, #1178c6, #13b0bf);
 }
 
 #logo {
@@ -131,6 +131,7 @@ background: linear-gradient(to bottom right, #31708e, #8Fc1e3);
   background:#edeae5;
   /*fc3181*/
   /*fef9c7*/
+  min-height: 395px;
   padding: 0 0 20px 20px;
   border-width:5px;  
   border-style:outset;
@@ -174,7 +175,7 @@ background: linear-gradient(to bottom right, #31708e, #8Fc1e3);
   background: b-wekit-linear-gradient(bottom right, #026670), rgba(255, 255, 255, 1));
 background: -o-linear-gradient(bottom right, #31708e, #8Fc1e3);
 background: -moz-linear-gradient(bottom right, #31708e, #8Fc1e3);
-background: linear-gradient(to bottom right, #31708e, #8Fc1e3) 
+background: linear-gradient(to bottom right, #13b0bf, #1178c6);
 }
 
 #feed-heading h4{
@@ -246,7 +247,7 @@ background: linear-gradient(to bottom right, #31708e, #8Fc1e3)
   display: none;
   float:left;
   margin-bottom: 2%;
-  background-color:#8Fc1e3 !important;
+  background-color:#1178c6 !important;
   position:relative;
 }
 
@@ -256,9 +257,14 @@ background: linear-gradient(to bottom right, #31708e, #8Fc1e3)
   font-family: Helvetica, Arial;
   padding: 10px;
   height: 300px;
+  width: 100%;
   max-height: 300px;
   display: none;
   margin: 0 0 30px 0;
+}
+
+#linkBoxContainer{
+  padding: 0;
 }
 
 #link-repo{
@@ -294,8 +300,8 @@ background: linear-gradient(to bottom right, #31708e, #8Fc1e3)
  font-family: Helvetica, Arial;
  background: white;
  padding: 10px;
- height: 300px;
- max-height: 300px;
+ height: 390px;
+ max-height: 400px;
  display: none;
  margin: 0;
  border: outset 5px;
@@ -361,7 +367,7 @@ footer {
   background: -webkit-linear-gradient(top left, #687864), rgba(255, 255, 255, 1));
 background: -o-linear-gradient(top left, #687864, rgba(255, 255, 255, 1));
 background: -moz-linear-gradient(top left, #687864, rgba(255, 255, 255, 1));
-background: linear-gradient(to top left, #687864, rgba(255, 255, 255, 1));
+background: linear-gradient(to bottom right, #13b0bf, #1178c6);
 }
 
 /*======= MEDIA QUERIES ========*/
