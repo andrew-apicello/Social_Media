@@ -1,12 +1,11 @@
 body{
-  background-color: white;
+  background-color: #eaebed;
   font-family: 'Oswald', sans-serif;
 
-  background: white;
   background: -webkit-linear-gradient(bottom, white), #f7f9fb);
-background: -o-linear-gradient(bottom, white, #f7f9fb);
-background: -moz-linear-gradient(bottom, white, #f7f9fb);
-background: linear-gradient(to bottom, rgb(254, 249, 199, .5), #f7f9fb);
+  background: -o-linear-gradient(bottom, white, #f7f9fb);
+  background: -moz-linear-gradient(bottom, white, #f7f9fb);
+  background: linear-gradient(to bottom, rgb(254, 249, 199, .5), #f7f9fb);
 }
 
 .member-name{
@@ -27,7 +26,7 @@ background: linear-gradient(to bottom, rgb(254, 249, 199, .5), #f7f9fb);
 .container {
   width: 100%;
   max-width: 1360px;
-  margin: 40px auto 0px auto;
+  margin: 60px auto 0px auto;
   clear: both;
 }
 
@@ -35,7 +34,8 @@ background: linear-gradient(to bottom, rgb(254, 249, 199, .5), #f7f9fb);
 
 .navbar{
   padding: 40px 0 0 50px;
-  border-bottom: solid 1px;
+box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
+border: 0px solid black;
   border-radius: 0;
 
   background: white;
@@ -128,38 +128,36 @@ background: linear-gradient(to bottom right, #31708e, #8Fc1e3);
 
 /* ============== User info section ===============*/
 #member-info{
-  background:#edeae5;
-  /*fc3181*/
-  /*fef9c7*/
-  padding: 0 0 20px 20px;
-  border-width:5px;  
-  border-style:outset;
+  background:#9bb3c6;
+  padding: 0 0 30px 20px;
+box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
+min-height: 385px;
 }
 
 #name-header{
   font-size:40px;
   font-weight:500;
-  margin-bottom: 40px;
+
 }
 
 .member-image{
   width:250px;
   height: 250px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom:20px;
 }
 
-.upload-btn{
-
+#member-well{
+  min-height:250px;
 }
 
-.file-upload {
-  display: none;
-}
 
 /* =================FEED AREA======================*/
 #feed-container{
-  border: outset 5px;  
+box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
+border: 0px solid black;
 }
+
 #feed {
   height: 265px;
   overflow: scroll;
@@ -167,18 +165,17 @@ background: linear-gradient(to bottom right, #31708e, #8Fc1e3);
 }
 
 #feed-heading{
-  /*background-color: #3b3a30 !important; */
+  background-color: #9bb3c6 !important; 
   color: white !important;
   text-align:center;
   background: white;
-  background: b-wekit-linear-gradient(bottom right, #026670), rgba(255, 255, 255, 1));
-background: -o-linear-gradient(bottom right, #31708e, #8Fc1e3);
-background: -moz-linear-gradient(bottom right, #31708e, #8Fc1e3);
-background: linear-gradient(to bottom right, #31708e, #8Fc1e3) 
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
+  border: 0px solid black;
 }
 
 #feed-heading h4{
   color: white !important; 
+
 }
 
 .post{
@@ -201,9 +198,11 @@ background: linear-gradient(to bottom right, #31708e, #8Fc1e3)
 }
 
 #feed-footer{
-  background-color: #b2c2bf !important; 
+  background: b-wekit-linear-gradient(bottom right, #026670), rgba(255, 255, 255, 1));
+background: -o-linear-gradient(bottom right, #31708e, #8Fc1e3);
+background: -moz-linear-gradient(bottom right, #31708e, #8Fc1e3);
+background: linear-gradient(to bottom right, #31708e, #8Fc1e3)
 }
-
 
 /* ===============INTEREST BUTTONS===================*/
 
@@ -223,7 +222,7 @@ background: linear-gradient(to bottom right, #31708e, #8Fc1e3)
   font-size: 20px;
   cursor: pointer;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
-  margin: 20px 70px;
+  margin: 40px 85px 50px 85px;
   background: none;
 }
 
@@ -237,6 +236,7 @@ background: linear-gradient(to bottom right, #31708e, #8Fc1e3)
 
 .interests{
   width:100%;
+
 }
 
 /* ========HIDE/SHOW PANEL ========*/
@@ -246,31 +246,59 @@ background: linear-gradient(to bottom right, #31708e, #8Fc1e3)
   display: none;
   float:left;
   margin-bottom: 2%;
-  background-color:#8Fc1e3 !important;
+  background-color:#9bb3c6 !important;
   position:relative;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
+    border: 0px solid black;
+}
+
+#top-headlines{
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
+    border: 0px solid black;
+    text-align:center;
 }
 
 /*======= CHATBOX ======*/
+
+
 #linkBox{
   font: 13px;
   font-family: Helvetica, Arial;
   padding: 10px;
   height: 300px;
+
   max-height: 300px;
   display: none;
   margin: 0 0 30px 0;
+  background-color: #9bb3c6;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
+  border: 0px solid black;
+    width:100%;
+}
+
+#linkSearchPanel{
+  bottom: 0;
+}
+
+#linkBoxContainer{
+  padding:0;
 }
 
 #link-repo{
   font: 13px;
   font-family: Helvetica, Arial;
   padding: 10px;
-  margin: 0 0 30px 0;
-  height: 43%;
+  margin: 0 0 10px 0;
+  max-height: 135px;
+  overflow-y: scroll;
+}
+
+#link-repoPanel{
+  padding: 10px 0px 0px 0px;
 }
 
 #link-header{
-  text-align:center;
+  text-align:center;  
 }
 
 #linkForm{
@@ -289,19 +317,16 @@ background: linear-gradient(to bottom right, #31708e, #8Fc1e3)
 }
 
 #chatBox {
- /* float: right;*/
  font: 13px;
  font-family: Helvetica, Arial;
  background: white;
  padding: 10px;
  height: 300px;
- max-height: 300px;
+ max-height: 290px;
  display: none;
  margin: 0;
- border: outset 5px;
-/*  position: fixed;
-  bottom: 70px;
-  right: 10px;*/
+border-radius:5px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
 }
 
 #chatBox form {
@@ -309,13 +334,13 @@ background: linear-gradient(to bottom right, #31708e, #8Fc1e3)
   bottom: 0;
   left:0;
   width: 100%;
-  border: outset 2px;
 }
 
 #chatBox form input { 
   border: 0; 
   padding: 10px; 
   width: 89%;
+  border-top:solid 1px #ccc;
 }
 
 #chatBox form button { 
@@ -346,18 +371,15 @@ footer,
 }
 
 footer {
-/*  position: fixed;
-  right: 0;
-  bottom: 0;
-  left: 0;*/
+
   padding: 20px 0 0 0;
   width: 100%;
   clear: both;
   font-size: 12px;
   color: #3b3a30;
   text-align: center;
-  border-top: 1px solid black;
-  background: white;
+box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
+border: 0px solid black;
   background: -webkit-linear-gradient(top left, #687864), rgba(255, 255, 255, 1));
 background: -o-linear-gradient(top left, #687864, rgba(255, 255, 255, 1));
 background: -moz-linear-gradient(top left, #687864, rgba(255, 255, 255, 1));

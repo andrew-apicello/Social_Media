@@ -356,4 +356,206 @@ module.exports = function(app) {
     })
   });
 
+//----------Link Repo API Routes--------------//
+
+//------------------Business-------------------//
+
+ app.get("/api/allBusinessLink", function(req, res) {
+
+    db.BusinessLinks.findAll({}).then(function(results) {
+
+        res.json(results);
+    });
+  });
+
+  app.post("/api/newBusinessLink", function(req, res) {
+
+    console.log("Business Link | Test-Chat Data: ");
+    console.log(req.body);
+
+    db.BusinessLinks.create({
+        author: req.body.author,
+        body: req.body.body,
+        created_at: req.body.created_at
+    }).then(function(results){
+
+          res.end();
+    })
+  });
+
+//------------------Entertainment-------------------//
+
+ app.get("/api/allEntertainmentLink", function(req, res) {
+
+    db.EntertainmentLinks.findAll({}).then(function(results) {
+
+        res.json(results);
+    });
+  });
+
+  app.post("/api/newEntertainmentLink", function(req, res) {
+
+    console.log("Entertainment Link | Test-Chat Data: ");
+    console.log(req.body);
+
+    db.EntertainmentLinks.create({
+        author: req.body.author,
+        body: req.body.body,
+        created_at: req.body.created_at
+    }).then(function(results){
+
+          res.end();
+    })
+  });
+
+//------------------Gaming-------------------//
+
+ app.get("/api/allGamingLink", function(req, res) {
+
+    db.GamingLinks.findAll({}).then(function(results) {
+
+        res.json(results);
+    });
+  });
+
+  app.post("/api/newGamingLink", function(req, res) {
+
+    console.log("Gaming Link | Test-Chat Data: ");
+    console.log(req.body);
+
+    db.GamingLinks.create({
+        author: req.body.author,
+        body: req.body.body,
+        created_at: req.body.created_at
+    }).then(function(results){
+
+          res.end();
+    })
+  });
+
+//------------------Music-------------------//
+
+ app.get("/api/allMusicLink", function(req, res) {
+
+    db.MusicLinks.findAll({}).then(function(results) {
+
+        res.json(results);
+    });
+  });
+
+  app.post("/api/newMusicLink", function(req, res) {
+
+    console.log("Music Link | Test-Chat Data: ");
+    console.log(req.body);
+
+    db.MusicLinks.create({
+        author: req.body.author,
+        body: req.body.body,
+        created_at: req.body.created_at
+    }).then(function(results){
+
+          res.end();
+    })
+  });
+
+//------------------Politics-------------------//
+
+ app.get("/api/allPoliticsLink", function(req, res) {
+
+    db.PoliticsLinks.findAll({}).then(function(results) {
+
+        res.json(results);
+    });
+  });
+
+  app.post("/api/newPoliticsLink", function(req, res) {
+
+    console.log("Politics Link | Test-Chat Data: ");
+    console.log(req.body);
+
+    db.PoliticsLinks.create({
+        author: req.body.author,
+        body: req.body.body,
+        created_at: req.body.created_at
+    }).then(function(results){
+
+          res.end();
+    })
+  });
+
+//------------------Science-------------------//
+
+ app.get("/api/allScience%20and%20NatureLink", function(req, res) {
+
+    db.ScienceLinks.findAll({}).then(function(results) {
+
+        res.json(results);
+    });
+  });
+
+  app.post("/api/newScience%20and%20NatureLink", function(req, res) {
+
+    console.log("Science Link | Test-Chat Data: ");
+    console.log(req.body);
+
+    db.ScienceLinks.create({
+        author: req.body.author,
+        body: req.body.body,
+        created_at: req.body.created_at
+    }).then(function(results){
+
+          res.end();
+    })
+  });
+
+//------------------Sports-------------------//
+
+ app.get("/api/allSportsLink", function(req, res) {
+
+    db.SportsLinks.findAll({}).then(function(results) {
+
+        res.json(results);
+    });
+  });
+
+  app.post("/api/newSportsLink", function(req, res) {
+
+    console.log("Sports Link | Test-Chat Data: ");
+    console.log(req.body);
+
+    db.SportsLinks.create({
+        author: req.body.author,
+        body: req.body.body,
+        created_at: req.body.created_at
+    }).then(function(results){
+
+          res.end();
+    })
+  });
+
+//---------------Technology Links-------------------//
+
+ app.get("/api/allTechnologyLink", function(req, res) {
+
+    db.TechnologyLinks.findAll({}).then(function(results) {
+
+        res.json(results);
+    });
+  });
+
+  app.post("/api/newTechnologyLink", function(req, res) {
+
+    console.log("Technology Link | Test-Chat Data: ");
+    console.log(req.body);
+
+    db.TechnologyLinks.create({
+        author: req.body.author,
+        body: req.body.body,
+        created_at: req.body.created_at
+    }).then(function(results){
+
+          res.end();
+    })
+  });
+
 }; //End module.exports

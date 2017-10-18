@@ -3,6 +3,8 @@ $(document).ready(function() {
 var username;
 var nsp;
 var room;
+var linkList = [];
+var numLinks = 0;
 
 // This file just does a GET request to figure out which user is logged in
 // and updates the HTML on the page
@@ -216,8 +218,17 @@ $(".flip").click(function(){
 
     if (data.length !== 0) {
       for (var i = 0; i < data.length; i++) {
-          $('#messages').append($('<li>').text(moment(data[i].created_at).format("(h:mm a) ")+data[i].author+": "+data[i].body));
-          $("#messages").animate({scrollTop: $('#messages').height()}, 1000);
+          $('#messages').append($('<li>').html(moment(data[i].created_at).format("(h:mm a) ")+data[i].author+": "+data[i].body));
+          $("#messages").animate({scrollTop: $("#messages").prop('scrollHeight')}, 50);
+        }
+      }
+    });
+
+  $.get("/api/all"+room+"Link", function(data) {
+
+    if (data.length !== 0) {
+      for (var i = 0; i < data.length; i++) {
+          $("#link-repo").prepend($('<li style="list-style-type: none">').html(moment(data[i].created_at).format("(h:mm a) ")+data[i].author+": <a target='_blank' href="+data[i].body+">"+data[i].body+"</a>"));
         }
       }
     });
@@ -225,86 +236,113 @@ $(".flip").click(function(){
 });
 
 //Feed on click
+
 $('#post-submit').on('click', function(event) {
   event.preventDefault();
-
-  var newPost = {
-      author: username,
-      body: $('#post-field').val().trim(),
-      created_at: moment().format('YYYY-MM-DD HH:mm:ss')
-  };
-
-  console.log(newPost);
-
+  var postBody = $('#post-field').val().trim();
+  if(postBody.indexOf('http://') > -1 || postBody.indexOf('https://') > -1){
+      postBody = postBody.link(postBody)
+      var newPost = {
+        author: username,
+        body: postBody,
+        created_at: moment().format('YYYY-MM-DD HH:mm:ss')
+      }
+  } else {
+      var newPost = {
+        author: username,
+        body: postBody,
+        created_at: moment().format('YYYY-MM-DD HH:mm:ss') 
+    }
+  }
   $.post('api/newFeed', newPost).done(function() {
-
       var row = $('<div>');
       row.addClass('post');
-
       row.append("<p>" + moment(newPost.created_at).format("dddd MMM Do YYYY - h:mma:") + "</p>");
-
       row.append("<strong><p>" + newPost.author + ": </strong>" + newPost.body + "</p>");
-
       $("#post-area").prepend(row);
       });
-
       $("#post-field").val("");
       });
-
   $.get("/api/allFeed", function(data) {
-
     if (data.length !== 0) {
-
       for (var i = 0; i < data.length; i++) {
-
           var row = $("<div>");
           row.addClass("post");
-
-          row.append("<p>" + data[i].author + " posted.. </p>");
-          row.append("<p>" + data[i].body + "</p>");
-          row.append("<p>At " + moment(data[i].created_at).format("h:mma on dddd") + "</p>");
-
+          row.append("<p>" + moment(data[i].created_at).format("dddd MMM Do YYYY - h:mma:") + "</p>");
+          row.append("<strong><p>" + data[i].author + ": </strong>" + data[i].body + "</p>");;
           $("#post-area").prepend(row);
         }
       }
     });
-
   // ============ Socket Chat ===============
-  	var socket = io.connect();
-
-  	function setUsername() {
-  		socket.emit('set-username', username);
-  	}
-
-  	$('#chatForm').submit(function(event){
-  	  event.preventDefault(event);
-  	  if ($("#sendMessage").val() == ""){
-  	  	return false;
-  	  }
-
+    var socket = io.connect();
+    var linkCount = 0;
+    function setUsername() {
+        socket.emit('set-username', username);
+    }
+    $('#chatForm').submit(function(event){
+      event.preventDefault(event);
+      if ($("#sendMessage").val() == ""){
+        return false;
+      }
       var newChat = {
       author: username,
       body: $('#sendMessage').val().trim(),
       created_at: moment().format('YYYY-MM-DD HH:mm:ss')
       };
-
       $.post('api/new'+room, newChat);
+      socket.emit('chat message', $('#sendMessage').val());
+      $('#sendMessage').val("");
+      return false;
+        });
+   socket.on('chat message', function(msg){
+    //variables for chat parsing
+       var chat = msg.message;
+       var link;
+       var linkIndex;
+       var linkObj = {};
+    //conditionals for url parsing
+       if(chat.indexOf('http://') > -1 || chat.indexOf('https://') > -1){
+        linkCount++;
+        linkIndex = chat.indexOf('http');
+        link = chat.slice(linkIndex);
+        var linkData = $('<li style="list-style-type: none">').html(linkCount + '. ' + msg.username + ': ');
+        linkData = linkData.append($('<a>').html(link));
+        linkData.addClass('link' + numLinks);
+        numLinks++;
+        linkObj = {
+          author: username,
+          body: link,
+          created_at: moment().format('YYYY-MM-DD HH:mm:ss')
+        };
+    //store all links in linkList as objects
+        linkList.push(linkObj);
+        $.post('api/new'+room+'Link', linkObj);
+        var startLink = chat.indexOf('http');
+        var endOfLink = chat.indexOf(' ', startLink);
+        if (endOfLink < startLink){
+        var url = chat.substring(startLink);
+        var link = url.link(url);
+        chat = chat.replace(url, link);
+        } else {
+        var url = chat.substring(startLink, endOfLink);
+        var link = url.link(url);
+        chat = chat.replace(url, link);
+        }
 
-  	  socket.emit('chat message', $('#sendMessage').val());
-  	  $('#sendMessage').val("");
-  	  return false;
-  		});
-
-  socket.on('chat message', function(msg){
-  $('#messages').append($('<li>').text(moment().format("(h:mm a) ")+msg.username+": "+msg.message));
-  $("#messages").animate({scrollTop: $('#messages').height()}, 1000);
-  });
-
+        $('#link-repo').prepend(linkData);
+        $('#messages').append($('<li>').html(moment().format("(h:mm a) ")+msg.username+": "+chat));
+        $("#messages").animate({scrollTop: $("#messages").prop('scrollHeight')}, 500);
+       }
+        else {
+        $('#messages').append($('<li>').text(moment().format("(h:mm a) ")+msg.username+": "+msg.message));
+        $("#messages").animate({scrollTop: $("#messages").prop('scrollHeight')}, 500);
+       }
+    });
   //Change profile pic script
   var readURL = function(input) {
       if (input.files && input.files[0]) {
           var reader = new FileReader();
-
           reader.onload = function(e) {
               $('.profile-img').attr('src', e.target.result);
               storePicture(e);
@@ -312,21 +350,41 @@ $('#post-submit').on('click', function(event) {
           reader.readAsDataURL(input.files[0]);
       }
   }
-
   $(".file-upload").on('change', function() {
       readURL(this);
   });
-
   $(".upload-btn").on('click', function() {
     
       event.preventDefault();
     $(".file-upload").click();
   });
+//live search for link repo
+  $('#link-repo-searchbar').keyup(function(){
+    var input = $('#link-repo-searchbar').val();
+   
+    if (linkList.length < 1) {
+      alert('nothing to search!');
+      return false;
+    }
+    var filter = input.toLowerCase();
+    var links;
+    var name;
+    var messageLink;
+      for (var i = 0; i < linkList.length; i++) {
+        
+        var name = linkList[i].name.toLowerCase();
+        var messageLink = linkList[i].link.toLowerCase();
+        var targetLink;
+        if (name.indexOf(filter) > -1 || messageLink.indexOf(filter) > -1) {
+    
+          console.log('link present');
+          $('.link' + i).css('display', '');
+        } else {
+          console.log('no link present');
+          $('.link' + i).css('display', 'none');
+        }
+      }
 
-  function storePicture(target){
-
-    // send target to database
-
-  }
+  });
 
 }); //End doc ready
