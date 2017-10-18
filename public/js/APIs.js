@@ -1,7 +1,7 @@
 var flipped = false;
 
 $(".flip").click(function(){
-$("#toggle-panel")
+// $("#toggle-panel")
 
 var apiKey = "2a22d190b32c4af7a150ebe7c5c075ef"
 var categorySelection = $(this).text();
@@ -62,12 +62,16 @@ $.ajax({
 	flipped = true;
 	
 	} else {
-		$("#top-headlines").empty();
-		$("#articleOne").empty();
-		$("#articleTwo").empty();
-		$("#articleThree").empty();
-		$("#messages").empty();
-
+		$("#toggle-panel").slideToggle("slow");
+  		$("#chatBox").slideToggle("slow");
+  		$("#linkBox").slideToggle("slow");
+  		setTimeout(function(){$("#top-headlines").empty()}, 1000);
+  		setTimeout(function(){$("#link-repo").empty()}, 1000);
+  		setTimeout(function(){$("#articleOne").empty()}, 1000);
+  		setTimeout(function(){$("#articleTwo").empty()}, 1000);
+  		setTimeout(function(){$("#articleThree").empty()}, 1000);
+  		setTimeout(function(){$("#messages").empty()}, 1000);
+		
 		flipped = false;
 	}
   }

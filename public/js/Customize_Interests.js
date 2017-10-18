@@ -3,7 +3,6 @@ $.get("/api/user_data").then(function(data) {
     id = data.id;
     })
 
-
 $(".interestEditOne").click(function(){
   var categorySelection = $(this).text();
   console.log(categorySelection);
@@ -15,7 +14,6 @@ $(".interestEditOne").click(function(){
       console.log("success")
   })
 });
-
 
 $(".interestEditTwo").click(function(){
   var categorySelection = $(this).text();

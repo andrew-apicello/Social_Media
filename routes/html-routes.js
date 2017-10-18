@@ -31,4 +31,10 @@ module.exports = function(app) {
     res.render("profile", req.user);
   });
 
+  app.get("/about", function(req, res) {
+    // res.sendFile(path.join(__dirname, "../public/members.html"));
+    res.render("about", req.user);
+  });
+
+
 };

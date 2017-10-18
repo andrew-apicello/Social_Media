@@ -3,6 +3,18 @@ body{
   font-family: 'Oswald', sans-serif;
 
   background: white;
+  background: -webkit-linear-gradient(bottom, white), #f7f9fb);
+background: -o-linear-gradient(bottom, white, #f7f9fb);
+background: -moz-linear-gradient(bottom, white, #f7f9fb);
+background: linear-gradient(to bottom, rgb(254, 249, 199, .5), #f7f9fb);
+}
+
+.member-name{
+  color: white;
+}
+
+#name-header{
+  color:black;
   background: -webkit-linear-gradient(bottom, white), #fef9c7);
 background: -o-linear-gradient(bottom, white, #fef9c7);
 background: -moz-linear-gradient(bottom, white, #fef9c7);
@@ -26,12 +38,16 @@ background: linear-gradient(to bottom, rgb(254, 249, 199, .5), #fef9c7);
 /* ====================NAVBAR=====================*/
 
 .navbar{
-  padding: 40px 0 0 50px;
-  border-bottom: solid 1px;
-  border-radius: 0;
+padding: 40px 0 0 50px;
+border-bottom: solid 1px;
+border-radius: 0;
 
-  background: white;
-  background: -webkit-linear-gradient(bottom right, #026670), rgba(255, 255, 255, 1));
+background: white;
+background: b-wekit-linear-gradient(bottom right, #026670), rgba(255, 255, 255, 1));
+background: -o-linear-gradient(bottom right, #31708e, #8Fc1e3);
+background: -moz-linear-gradient(bottom right, #31708e, #8Fc1e3);
+background: linear-gradient(to bottom right, #31708e, #8Fc1e3);
+background: -webkit-linear-gradient(bottom right, #026670), rgba(255, 255, 255, 1));
 background: -o-linear-gradient(bottom right, #026670, rgba(255, 255, 255, 1));
 background: -moz-linear-gradient(bottom right, #026670, rgba(255, 255, 255, 1));
 background: linear-gradient(to bottom right, #026670, rgba(255, 255, 255, 1));
@@ -43,16 +59,18 @@ background: linear-gradient(to bottom right, #026670, rgba(255, 255, 255, 1));
   width: 120px;
   height: 120px;
   padding: 10px;
-  background: #3b3a30;
+  background: white;
   border-radius: 50%;
-  border: 0;
+  border: 1px;
+  border-color: white;
   font-size: 20px;
   cursor: pointer;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
 }
 
 #logo-txt{
   font-weight: 300;
-  color: white;
+  color: #31708e;
   font-size:60px;
   text-align:center;
   vertical-align:center;
@@ -132,7 +150,7 @@ background: linear-gradient(to bottom right, #026670, rgba(255, 255, 255, 1));
   margin-bottom: 40px;
 }
 
-.profile-img{
+.member-image{
   width:250px;
   height: 250px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
@@ -157,9 +175,14 @@ background: linear-gradient(to bottom right, #026670, rgba(255, 255, 255, 1));
 }
 
 #feed-heading{
-  background-color: #3b3a30 !important; 
+  /*background-color: #3b3a30 !important; */
   color: white !important;
-  text-align:center; 
+  text-align:center;
+  background: white;
+  background: b-wekit-linear-gradient(bottom right, #026670), rgba(255, 255, 255, 1));
+background: -o-linear-gradient(bottom right, #31708e, #8Fc1e3);
+background: -moz-linear-gradient(bottom right, #31708e, #8Fc1e3);
+background: linear-gradient(to bottom right, #31708e, #8Fc1e3) 
 }
 
 #feed-heading h4{
@@ -210,9 +233,11 @@ background: linear-gradient(to bottom right, #026670, rgba(255, 255, 255, 1));
   cursor: pointer;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
   margin: 20px 70px;
+  background: none;
 }
 
 .interests button:hover { 
+  background: #8Fc1e3; 
   background: #fce181; 
 }
 
@@ -231,11 +256,49 @@ background: linear-gradient(to bottom right, #026670, rgba(255, 255, 255, 1));
   display: none;
   float:left;
   margin-bottom: 2%;
+  background-color:#8Fc1e3 !important;
   background-color:#9fa9a3 !important;
   position:relative;
 }
 
 /*======= CHATBOX ======*/
+
+#linkBox{
+  font: 13px;
+  font-family: Helvetica, Arial;
+  padding: 10px;
+  height: 300px;
+  max-height: 300px;
+  display: none;
+  margin: 0 0 30px 0;
+}
+
+#link-repo{
+  font: 13px;
+  font-family: Helvetica, Arial;
+  padding: 10px;
+  margin: 0 0 30px 0;
+  height: 43%;
+}
+
+#link-header{
+  text-align:center;
+}
+
+#linkForm{
+}
+
+#linkForm input { 
+  border: 0; 
+  padding: 10px; 
+  width: 80%;
+}
+
+#linkForm form button { 
+  width: 40px; 
+  padding: 10px; 
+  display:inline-block;
+=======
 #empty-space{
   height:200px;
 }
@@ -310,10 +373,10 @@ footer {
   text-align: center;
   border-top: 1px solid black;
   background: white;
-  background: -webkit-linear-gradient(top left, #026670), rgba(255, 255, 255, 1));
-background: -o-linear-gradient(top left, #026670, rgba(255, 255, 255, 1));
-background: -moz-linear-gradient(top left, #026670, rgba(255, 255, 255, 1));
-background: linear-gradient(to top left, #ffd542, rgba(255, 255, 255, 1));
+  background: -webkit-linear-gradient(top left, #687864), rgba(255, 255, 255, 1));
+background: -o-linear-gradient(top left, #687864, rgba(255, 255, 255, 1));
+background: -moz-linear-gradient(top left, #687864, rgba(255, 255, 255, 1));
+background: linear-gradient(to top left, #687864, rgba(255, 255, 255, 1));
 }
 
 /*======= MEDIA QUERIES ========*/
@@ -327,12 +390,11 @@ background: linear-gradient(to top left, #ffd542, rgba(255, 255, 255, 1));
   
   -webkit-transform:translate(0%,0%);
   transform:translate(0%,0%);
-
   transition:0.5s
 }
 
 .flip:hover{
-  backgroud-color: #d6177d;
+  backgroud-color: #8Fc1e3;
   color: black;
   transition:0.5s;
 }
@@ -344,7 +406,7 @@ background: linear-gradient(to top left, #ffd542, rgba(255, 255, 255, 1));
   position:absolute;
   top:0; right:0; bottom:0; left:0;
   border-radius:50%;
-  border:1px solid #07b2c1;
+  border:1px solid #8Fc1e3;
 }
 
 .flip:before {
@@ -374,3 +436,5 @@ background: linear-gradient(to top left, #ffd542, rgba(255, 255, 255, 1));
   50% {transform:scale(1.5); opacity:0;}
 }
 
+
+/* ============About Us Page ============*/
