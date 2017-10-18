@@ -10,9 +10,9 @@ var passport = require("./config/passport");
 MySQLStore = require('connect-mysql')(session),
     options = {
       config: {
-        user: 'root', 
-        password: "", 
-        database: 'social_media_testDB' 
+        user: 'h153upjch5b2jnbi', 
+        password: "ii3olewykwb325q8", 
+        database: 'csb9pqsx94kdml7z' 
       }
     };
 
