@@ -1,13 +1,19 @@
 body{
-  background-color: #eaece5;
+  background-color: white;
   font-family: 'Oswald', sans-serif;
+
+  background: white;
+  background: -webkit-linear-gradient(bottom, white), #fef9c7);
+background: -o-linear-gradient(bottom, white, #fef9c7);
+background: -moz-linear-gradient(bottom, white, #fef9c7);
+background: linear-gradient(to bottom, rgb(254, 249, 199, .5), #fef9c7);
 }
 
 .wrapper {
   height: auto !important;
   height: 100%;
   min-height: 100%;
-  margin: 0 auto 100px;
+  /*margin: 0 auto 100px;*/
 }
 
 .container {
@@ -20,9 +26,15 @@ body{
 /* ====================NAVBAR=====================*/
 
 .navbar{
-  background-color: #b2c2bf;
   padding: 40px 0 0 50px;
-  border-bottom: solid #3b3a30 5px;
+  border-bottom: solid 1px;
+  border-radius: 0;
+
+  background: white;
+  background: -webkit-linear-gradient(bottom right, #026670), rgba(255, 255, 255, 1));
+background: -o-linear-gradient(bottom right, #026670, rgba(255, 255, 255, 1));
+background: -moz-linear-gradient(bottom right, #026670, rgba(255, 255, 255, 1));
+background: linear-gradient(to bottom right, #026670, rgba(255, 255, 255, 1));
 }
 
 #logo {
@@ -106,7 +118,9 @@ body{
 
 /* ============== User info section ===============*/
 #member-info{
-  background:#b2c2bf;
+  background:#edeae5;
+  /*fc3181*/
+  /*fef9c7*/
   padding: 0 0 20px 20px;
   border-width:5px;  
   border-style:outset;
@@ -129,7 +143,7 @@ body{
 }
 
 .file-upload {
-    display: none;
+  display: none;
 }
 
 /* =================FEED AREA======================*/
@@ -168,11 +182,11 @@ body{
 
 .post> *
 {
-    padding-left: 10px;    
+  padding-left: 10px;    
 }
 
 #feed-footer{
-    background-color: #b2c2bf !important; 
+  background-color: #b2c2bf !important; 
 }
 
 
@@ -188,7 +202,7 @@ body{
   width: 150px;
   height: 150px;
   padding: 10px;
-  background: #3b3a30;
+  background: #026670;
   border-radius: 50%;
   border: 0;
   color: white;
@@ -199,7 +213,7 @@ body{
 }
 
 .interests button:hover { 
-    background: #847567; 
+  background: #fce181; 
 }
 
 .interests button:focus { 
@@ -213,12 +227,12 @@ body{
 /* ========HIDE/SHOW PANEL ========*/
 
 #toggle-panel {
-    padding: 20px;
-    display: none;
-    float:left;
-    margin-bottom: 2%;
-    background-color:#9fa9a3 !important;
-    position:relative;
+  padding: 20px;
+  display: none;
+  float:left;
+  margin-bottom: 2%;
+  background-color:#9fa9a3 !important;
+  position:relative;
 }
 
 /*======= CHATBOX ======*/
@@ -228,15 +242,15 @@ body{
 
 #chatBox {
  /* float: right;*/
-  font: 13px;
-  font-family: Helvetica, Arial;
-  background: white;
-  padding: 10px;
-  height: 300px;
-  max-height: 300px;
-  display: none;
-  margin: 0;
-  border: outset 5px;
+ font: 13px;
+ font-family: Helvetica, Arial;
+ background: white;
+ padding: 10px;
+ height: 300px;
+ max-height: 300px;
+ display: none;
+ margin: 0;
+ border: outset 5px;
 /*  position: fixed;
   bottom: 70px;
   right: 10px;*/
@@ -272,7 +286,7 @@ body{
 #messages li { 
   padding: 5px 10px; 
 }
-      
+
 #messages li:nth-child(odd) { 
   background: #eee; 
 }
@@ -284,17 +298,79 @@ footer,
 }
 
 footer {
-  position: fixed;
+/*  position: fixed;
   right: 0;
   bottom: 0;
-  left: 0;
-  padding: 20px 0;
+  left: 0;*/
+  padding: 20px 0 0 0;
+  width: 100%;
   clear: both;
   font-size: 12px;
   color: #3b3a30;
   text-align: center;
-  background: #b2c2bf;
-  border-top: 5px solid #3b3a30;
+  border-top: 1px solid black;
+  background: white;
+  background: -webkit-linear-gradient(top left, #026670), rgba(255, 255, 255, 1));
+background: -o-linear-gradient(top left, #026670, rgba(255, 255, 255, 1));
+background: -moz-linear-gradient(top left, #026670, rgba(255, 255, 255, 1));
+background: linear-gradient(to top left, #ffd542, rgba(255, 255, 255, 1));
 }
 
 /*======= MEDIA QUERIES ========*/
+
+
+/*==========Button Animation==========*/
+
+.flip {
+  -webkit-transition:height .25s ease, width .25s ease;
+  transition:height .25s ease, width .25s ease;
+  
+  -webkit-transform:translate(0%,0%);
+  transform:translate(0%,0%);
+
+  transition:0.5s
+}
+
+.flip:hover{
+  backgroud-color: #d6177d;
+  color: black;
+  transition:0.5s;
+}
+
+.flip:before,
+.flip:after {
+  content:'';
+  display:block;
+  position:absolute;
+  top:0; right:0; bottom:0; left:0;
+  border-radius:50%;
+  border:1px solid #07b2c1;
+}
+
+.flip:before {
+  -webkit-animation: ripple 2s linear infinite;
+  animation: ripple 2s linear infinite;
+}
+.flip:after {
+  -webkit-animation: ripple 2s linear 1s infinite;
+  animation: ripple 2s linear 1s infinite;
+}
+
+.flip:hover:before,
+.flip:hover:after {
+  -webkit-animation: none;
+  animation: none;
+}
+
+@-webkit-keyframes ripple{
+  0% {-webkit-transform:scale(1); }
+  75% {-webkit-transform:scale(1.75); opacity:1;}
+  100% {-webkit-transform:scale(2); opacity:0;}
+}
+
+@keyframes ripple{
+  0% {transform:scale(1); }
+  25% {transform:scale(1.25); opacity:1;}
+  50% {transform:scale(1.5); opacity:0;}
+}
+

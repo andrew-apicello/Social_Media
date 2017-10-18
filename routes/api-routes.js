@@ -103,7 +103,7 @@ module.exports = function(app) {
     })
   });
 
-  app.post("/api/updateInterests", function(req, res) {
+  app.post("/api/updateInterestsOne", function(req, res) {
     console.log(req.body);
     db.User.update({
       interest1: req.body.interest1
@@ -112,9 +112,52 @@ module.exports = function(app) {
         {id:req.body.id}
     }).then(function() {
       console.log("post got to the server side")
-
     })
   });
+  app.post("/api/updateInterestsTwo", function(req, res) {
+    console.log(req.body);
+    db.User.update({
+      interest2: req.body.interest2
+    },{
+      where: 
+        {id:req.body.id}
+    }).then(function() {
+      console.log("post got to the server side")
+    })
+  });
+  app.post("/api/updateInterestsThree", function(req, res) {
+    console.log(req.body);
+    db.User.update({
+      interest3: req.body.interest3
+    },{
+      where: 
+        {id:req.body.id}
+    }).then(function() {
+      console.log("post got to the server side")
+    })
+  });
+  app.post("/api/updateInterestsFour", function(req, res) {
+    console.log(req.body);
+    db.User.update({
+      interest4: req.body.interest4
+    },{
+      where: 
+        {id:req.body.id}
+    }).then(function() {
+      console.log("post got to the server side")
+    })
+  });
+
+
+
+
+
+
+
+
+
+
+
 
 
 }; //End module.exports
