@@ -22,8 +22,40 @@ module.exports = function(sequelize, DataTypes) {
         isEmail: true
       }
     },
+    occupation: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    location: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    interest1: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    interest2: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    interest3: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    interest4: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     // The password cannot be null
     password: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    image:{
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    bio:{
       type: DataTypes.STRING,
       allowNull: false
     }
@@ -37,5 +69,7 @@ module.exports = function(sequelize, DataTypes) {
   User.hook("beforeCreate", function(user) {
     user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
   });
-  return User;
-};
+  return User;  
+
+
+}; //End module.exports

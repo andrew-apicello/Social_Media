@@ -21,7 +21,15 @@ module.exports = function(app) {
     db.User.create({
       name: req.body.name,
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      occupation: req.body.occupation,
+      location: req.body.location,
+      interest1: req.body.interest1,
+      interest2: req.body.interest2,
+      interest3: req.body.interest3,
+      interest4: req.body.interest4,
+      image: req.body.image,
+      bio: req.body.bio
     }).then(function() {
       res.redirect(307, "/api/login");
     }).catch(function(err) {
@@ -49,9 +57,303 @@ module.exports = function(app) {
       res.json({
         name: req.user.name,
         email: req.user.email,
-        id: req.user.id
+        id: req.user.id,
+        occupation: req.user.occupation,
+        location: req.user.location,
+        interest1: req.user.interest1,
+        interest2: req.user.interest2,
+        interest3: req.user.interest3,
+        interest4: req.user.interest4,
+        image: req.user.image,
+        bio: req.user.bio
       });
     }
   });
 
-};
+  app.get("/api/user_data/:name", function(req, res) {
+    db.User.findOne({
+      where: {
+        name: req.params.name
+      }
+    })
+    .then(function(result) {
+      res.json(result);
+    });
+  });
+
+//Feed API routes
+
+ app.get("/api/allFeed", function(req, res) {
+
+
+        db.Feed.findAll({}).then(function(results) {
+
+            res.json(results);
+        });
+  });
+
+  app.post("/api/newFeed", function(req, res) {
+
+    console.log("Test-Post Data: ");
+    console.log(req.body);
+
+    db.Feed.create({
+        author: req.body.author,
+        body: req.body.body,
+        created_at: req.body.created_at
+    }).then(function(results){
+
+          res.end();
+    })
+  });
+
+//------------Interests-----------------//
+
+  app.post("/api/updateInterestsOne", function(req, res) {
+    console.log(req.body);
+    db.User.update({
+      interest1: req.body.interest1
+    },{
+      where: 
+        {id:req.body.id}
+    }).then(function() {
+      console.log("post got to the server side")
+    })
+  });
+  app.post("/api/updateInterestsTwo", function(req, res) {
+    console.log(req.body);
+    db.User.update({
+      interest2: req.body.interest2
+    },{
+      where: 
+        {id:req.body.id}
+    }).then(function() {
+      console.log("post got to the server side")
+    })
+  });
+  app.post("/api/updateInterestsThree", function(req, res) {
+    console.log(req.body);
+    db.User.update({
+      interest3: req.body.interest3
+    },{
+      where: 
+        {id:req.body.id}
+    }).then(function() {
+      console.log("post got to the server side")
+    })
+  });
+  app.post("/api/updateInterestsFour", function(req, res) {
+    console.log(req.body);
+    db.User.update({
+      interest4: req.body.interest4
+    },{
+      where: 
+        {id:req.body.id}
+    }).then(function() {
+      console.log("post got to the server side")
+    })
+  });
+
+//-------------Chat API routes--------------//
+
+//------------------Business-------------------//
+
+ app.get("/api/allBusiness", function(req, res) {
+
+    db.Business.findAll({}).then(function(results) {
+
+        res.json(results);
+    });
+  });
+
+  app.post("/api/newBusiness", function(req, res) {
+
+    console.log("Business | Test-Chat Data: ");
+    console.log(req.body);
+
+    db.Business.create({
+        author: req.body.author,
+        body: req.body.body,
+        created_at: req.body.created_at
+    }).then(function(results){
+
+          res.end();
+    })
+  });
+
+//------------------Entertainment-------------------//
+
+ app.get("/api/allEntertainment", function(req, res) {
+
+    db.Entertainment.findAll({}).then(function(results) {
+
+        res.json(results);
+    });
+  });
+
+  app.post("/api/newEntertainment", function(req, res) {
+
+    console.log("Entertainment | Test-Chat Data: ");
+    console.log(req.body);
+
+    db.Entertainment.create({
+        author: req.body.author,
+        body: req.body.body,
+        created_at: req.body.created_at
+    }).then(function(results){
+
+          res.end();
+    })
+  });
+
+//------------------Gaming-------------------//
+
+ app.get("/api/allGaming", function(req, res) {
+
+    db.Gaming.findAll({}).then(function(results) {
+
+        res.json(results);
+    });
+  });
+
+  app.post("/api/newGaming", function(req, res) {
+
+    console.log("Gaming | Test-Chat Data: ");
+    console.log(req.body);
+
+    db.Gaming.create({
+        author: req.body.author,
+        body: req.body.body,
+        created_at: req.body.created_at
+    }).then(function(results){
+
+          res.end();
+    })
+  });
+
+//------------------Music-------------------//
+
+ app.get("/api/allMusic", function(req, res) {
+
+    db.Music.findAll({}).then(function(results) {
+
+        res.json(results);
+    });
+  });
+
+  app.post("/api/newMusic", function(req, res) {
+
+    console.log("Music | Test-Chat Data: ");
+    console.log(req.body);
+
+    db.Music.create({
+        author: req.body.author,
+        body: req.body.body,
+        created_at: req.body.created_at
+    }).then(function(results){
+
+          res.end();
+    })
+  });
+
+//------------------Politics-------------------//
+
+ app.get("/api/allPolitics", function(req, res) {
+
+    db.Politics.findAll({}).then(function(results) {
+
+        res.json(results);
+    });
+  });
+
+  app.post("/api/newPolitics", function(req, res) {
+
+    console.log("Politics | Test-Chat Data: ");
+    console.log(req.body);
+
+    db.Politics.create({
+        author: req.body.author,
+        body: req.body.body,
+        created_at: req.body.created_at
+    }).then(function(results){
+
+          res.end();
+    })
+  });
+
+//------------------Science-------------------//
+
+ app.get("/api/allScience%20and%20Nature", function(req, res) {
+
+    db.Science.findAll({}).then(function(results) {
+
+        res.json(results);
+    });
+  });
+
+  app.post("/api/newScience%20and%20Nature", function(req, res) {
+
+    console.log("Science | Test-Chat Data: ");
+    console.log(req.body);
+
+    db.Science.create({
+        author: req.body.author,
+        body: req.body.body,
+        created_at: req.body.created_at
+    }).then(function(results){
+
+          res.end();
+    })
+  });
+
+//------------------Sports-------------------//
+
+ app.get("/api/allSports", function(req, res) {
+
+    db.Sports.findAll({}).then(function(results) {
+
+        res.json(results);
+    });
+  });
+
+  app.post("/api/newSports", function(req, res) {
+
+    console.log("Sports | Test-Chat Data: ");
+    console.log(req.body);
+
+    db.Sports.create({
+        author: req.body.author,
+        body: req.body.body,
+        created_at: req.body.created_at
+    }).then(function(results){
+
+          res.end();
+    })
+  });
+
+//------------------Technology-------------------//
+
+ app.get("/api/allTechnology", function(req, res) {
+
+    db.Technology.findAll({}).then(function(results) {
+
+        res.json(results);
+    });
+  });
+
+  app.post("/api/newTechnology", function(req, res) {
+
+    console.log("Technology | Test-Chat Data: ");
+    console.log(req.body);
+
+    db.Technology.create({
+        author: req.body.author,
+        body: req.body.body,
+        created_at: req.body.created_at
+    }).then(function(results){
+
+          res.end();
+    })
+  });
+
+}; //End module.exports
