@@ -64,7 +64,9 @@ $.ajax({
 	} else {
 		$("#toggle-panel").slideToggle("slow");
   		$("#chatBox").slideToggle("slow");
+  		$("#linkBox").slideToggle("slow");
   		setTimeout(function(){$("#top-headlines").empty()}, 1000);
+  		setTimeout(function(){$("#link-repo").empty()}, 1000);
   		setTimeout(function(){$("#articleOne").empty()}, 1000);
   		setTimeout(function(){$("#articleTwo").empty()}, 1000);
   		setTimeout(function(){$("#articleThree").empty()}, 1000);
