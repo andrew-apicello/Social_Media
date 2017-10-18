@@ -25,75 +25,51 @@ $.ajax({
 }).done(function(result) {
 	console.log(result);
 
-	if (flipped == false){
+		if (flipped == false){
 
-		var topHeadlines = $("<h1>");
-		topHeadlines.append("Top " + categorySelection + " Headlines");
-		$("#top-headlines").append(topHeadlines);
+			var topHeadlines = $("<h1>");
+			topHeadlines.append("Top " + categorySelection + " Headlines");
+			$("#top-headlines").append(topHeadlines);
 
-<<<<<<< HEAD
-    var articleOneTitle = $("<h3>");
-    articleOneTitle.append(result.articles[0].title);
-=======
-    	var articleOneTitle = $("<h3>");
-    	articleOneTitle.append(result.articles[0].title);
->>>>>>> origin
-		$("#articleOne").append(articleOneTitle);
-		var articleOneAuthor = $("<h5>");
-		articleOneAuthor.append(result.articles[0].author)
-		$("#articleOne").append(articleOneAuthor);
-		$("#articleOne").append(result.articles[0].description);
-<<<<<<< HEAD
+	    var articleOneTitle = $("<h3>");
+	    articleOneTitle.append(result.articles[0].title);
+			$("#articleOne").append(articleOneTitle);
+			var articleOneAuthor = $("<h5>");
+			articleOneAuthor.append(result.articles[0].author)
+			$("#articleOne").append(articleOneAuthor);
+			$("#articleOne").append(result.articles[0].description);
 
-    var articleTwoTitle = $("<h3>");
-    articleTwoTitle.append(result.articles[1].title);
-		$("#articleTwo").append(articleTwoTitle);
-		var articleTwoAuthor = $("<h5>");
-		articleTwoAuthor.append(result.articles[1].author)
-		$("#articleTwo").append(articleTwoAuthor);
-		$("#articleTwo").append(result.articles[1].description);
+	    var articleTwoTitle = $("<h3>");
+	    articleTwoTitle.append(result.articles[1].title);
+			$("#articleTwo").append(articleTwoTitle);
+			var articleTwoAuthor = $("<h5>");
+			articleTwoAuthor.append(result.articles[1].author)
+			$("#articleTwo").append(articleTwoAuthor);
+			$("#articleTwo").append(result.articles[1].description);
 
-		var articleThreeTitle = $("<h3>");
-    articleThreeTitle.append(result.articles[2].title);
-		$("#articleThree").append(articleThreeTitle);
-		var articleThreeAuthor = $("<h5>");
-		articleThreeAuthor.append(result.articles[2].author)
-		$("#articleThree").append(articleThreeAuthor);
-		$("#articleThree").append(result.articles[2].description);
-=======
+			var articleThreeTitle = $("<h3>");
+	    articleThreeTitle.append(result.articles[2].title);
+			$("#articleThree").append(articleThreeTitle);
+			var articleThreeAuthor = $("<h5>");
+			articleThreeAuthor.append(result.articles[2].author)
+			$("#articleThree").append(articleThreeAuthor);
+			$("#articleThree").append(result.articles[2].description);
 
-    	var articleTwoTitle = $("<h3>");    	
-    	articleTwoTitle.append(result.articles[1].title);
-		$("#articleTwo").append(articleTwoTitle);
-		var articleTwoAuthor = $("<h5>");
-		articleTwoAuthor.append(result.articles[1].author)
-		$("#articleTwo").append(articleTwoAuthor);
-		$("#articleTwo").append(result.articles[1].description);
+			articleOneTitle.wrap("<a target='_blank' href="+result.articles[0].url+">")
+			articleTwoTitle.wrap("<a target='_blank' href="+result.articles[1].url+">")
+			articleThreeTitle.wrap("<a target='_blank' href="+result.articles[2].url+">")
 
-		var articleThreeTitle = $("<h3>");
-    	articleThreeTitle.append(result.articles[2].title);
-		$("#articleThree").append(articleThreeTitle);
-		var articleThreeAuthor = $("<h5>");
-		articleThreeAuthor.append(result.articles[2].author)
-		$("#articleThree").append(articleThreeAuthor);
-		$("#articleThree").append(result.articles[2].description);
-
-		articleOneTitle.wrap("<a target='_blank' href="+result.articles[0].url+">")
-		articleTwoTitle.wrap("<a target='_blank' href="+result.articles[1].url+">")
-		articleThreeTitle.wrap("<a target='_blank' href="+result.articles[2].url+">")
->>>>>>> origin
-
-	flipped = true;
+			flipped = true;
 	
-	} else {
-		$("#top-headlines").empty();
-		$("#articleOne").empty();
-		$("#articleTwo").empty();
-		$("#articleThree").empty();
-		$("#messages").empty();
+		} else {
+			$("#top-headlines").empty();
+			$("#articleOne").empty();
+			$("#articleTwo").empty();
+			$("#articleThree").empty();
+			$("#messages").empty();
 
-		flipped = false;
+			flipped = false;
+		}
 	}
-  }
-)
-});
+	)
+ });

@@ -27,7 +27,9 @@ module.exports = function(app) {
       interest1: req.body.interest1,
       interest2: req.body.interest2,
       interest3: req.body.interest3,
-      interest4: req.body.interest4
+      interest4: req.body.interest4,
+      image: req.body.image,
+      bio: req.body.bio
     }).then(function() {
       res.redirect(307, "/api/login");
     }).catch(function(err) {
@@ -61,7 +63,9 @@ module.exports = function(app) {
         interest1: req.user.interest1,
         interest2: req.user.interest2,
         interest3: req.user.interest3,
-        interest4: req.user.interest4
+        interest4: req.user.interest4,
+        image: req.user.image,
+        bio: req.user.bio
       });
     }
   });
@@ -103,14 +107,6 @@ module.exports = function(app) {
     })
   });
 
-<<<<<<< HEAD
-
-}; //End module.exports
-
-
-
-
-=======
   app.post("/api/updateInterests", function(req, res) {
     console.log(req.body);
     db.User.update({
@@ -126,4 +122,4 @@ module.exports = function(app) {
 
 
 }; //End module.exports
->>>>>>> origin
+

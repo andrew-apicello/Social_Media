@@ -1,3 +1,4 @@
+
 $(".interestEdit").click(function(){
 
   var categorySelection = $(this).text();

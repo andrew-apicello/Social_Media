@@ -13,11 +13,7 @@ MySQLStore = require('connect-mysql')(session),
     options = {
       config: {
         user: 'root', 
-<<<<<<< HEAD
         password: 'password', 
-=======
-        password: "", 
->>>>>>> origin
         database: 'social_media_testDB' 
       }
     };
@@ -31,13 +27,10 @@ var db = require("./models");
 // Creating express app and configuring middleware needed for authentication
 var app = express();
 
-<<<<<<< HEAD
 app.get("favicon.ico", function(req, res) {
   res.sendFile(path.join(__dirname, "/favicon.ico"));
 });
 
-=======
->>>>>>> origin
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("public"));

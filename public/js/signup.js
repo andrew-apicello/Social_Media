@@ -10,6 +10,8 @@ $(document).ready(function() {
   var interest3Input =$("#interest3-input");
   var interest4Input =$("#interest4-input");
   var passwordInput = $("input#password-input");
+  var imageInput = $("#image-input");
+  var bioInput = $("#bio-input");
 
   // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on("submit", function(event) {
@@ -23,14 +25,16 @@ $(document).ready(function() {
       interest2: interest2Input.val().trim(),
       interest3: interest3Input.val().trim(),
       interest4: interest4Input.val().trim(),
-      password: passwordInput.val().trim()
+      password: passwordInput.val().trim(),
+      image: imageInput.val().trim(),
+      bio: bioInput.val().trim()
     };
 
-    if (!userData.name || !userData.email || !userData.occupation || !userData.location || !userData.interest1 || !userData.interest2 || !userData.interest3 || !userData.interest4 || !userData.password) {
+    if (!userData.name || !userData.email || !userData.occupation || !userData.location || !userData.interest1 || !userData.interest2 || !userData.interest3 || !userData.interest4 || !userData.password || !userData.image || !userData.bio) {
       return;
     }
     // If we have an email and password, run the signUpUser function
-    signUpUser(userData.name, userData.email, userData.occupation, userData.location, userData.interest1, userData.interest2, userData.interest3, userData.interest4, userData.password);
+    signUpUser(userData.name, userData.email, userData.occupation, userData.location, userData.interest1, userData.interest2, userData.interest3, userData.interest4, userData.password, userData.image, userData.bio);
     nameInput.val("");
     emailInput.val("");
     passwordInput.val("");
@@ -40,11 +44,13 @@ $(document).ready(function() {
     interest2Input.val("");
     interest3Input.val("");
     interest4Input.val("");
+    imageInput.val("");
+    bioInput.val("");
   });
 
   // Does a post to the signup route. If succesful, we are redirected to the members page
   // Otherwise we log any errors
-  function signUpUser(name, email, occupation, location, interest1, interest2, interest3, interest4, password) {
+  function signUpUser(name, email, occupation, location, interest1, interest2, interest3, interest4, password, image, bio) {
     $.post("/api/signup", {
       name: name,
       email: email,
@@ -54,7 +60,9 @@ $(document).ready(function() {
       interest2: interest2,
       interest3: interest3,
       interest4: interest4,
-      password: password
+      password: password,
+      image: image,
+      bio: bio
     }).then(function(data) {
       window.location.replace(data);
       // If there's an error, handle it by throwing up a boostrap alert
