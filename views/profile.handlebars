@@ -35,10 +35,9 @@
   </nav> <!-- End header -->
 </nav> <!-- End navigation -->
 
-  <!-- ============= START PROFILE BODY ================== -->
+<!-- ============= START PROFILE BODY ================== -->
 
-    <div class="container">
-
+<div class="container">
       <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6">
           <div class="panel panel-default">
@@ -63,28 +62,44 @@
                 </div>
               </div> <!-- End Row -->
             </div>
-          </div>
-        </div> <!-- End col -->
+          </div> {{!-- End Row --}}
 
-        <div class="col-lg-6 col-md-6 col-sm-6">
-          <div class="panel panel-default" id="feed-container">
-            <div class="panel-heading" id="feed-heading">
-              <h4>Your Feed</h4>
+          <div class="row">
+            <div class="col-lg-5">
+              <img class="profile-img" src="../images/default-profileIMG.jpg" />
+              <div class="upload-btn">Upload Image</div>
+              <input class="file-upload" type="file" accept="image/*"/>
+            </div> {{!-- End col --}}
+
+            <div class="col-lg-6">
+              <h5>Location: <span class="member-location" id="member-location"></span></h5>
+              <h5>Occupation: <span class="member-occupation" id="member-occupation"></span></h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, molestias! Nulla iure blanditiis, vitae non, veniam quaerat nam temporibus reprehenderit iusto quos, veritatis architecto numquam! Corporis maxime, quisquam fugit mollitia!</p>
             </div>
-              <div class="panel-body" id="feed">
-                <div id="post-area">
-                </div>
-              </div>
-            <div class="panel-footer" id="feed-footer">
-              <div class="input-group" id="post-input">
-                  <input type="text" name="post-field" class="form-control" id="post-field">
-                  <span class="input-group-btn">
-                    <button class="btn btn-default" type="button" id="post-submit">POST</button>
-                  </span>
-              </div>
-            </div>
-        </div> <!-- End col -->
-      </div> <!-- End Row -->
+          </div> {{!-- End Row --}}
+        </div>
+      </div>
+    </div> <!-- End col -->
+
+    <div class="col-lg-6 col-md-6 col-sm-6">
+      <div class="panel panel-default" id="feed-container">
+        <div class="panel-heading" id="feed-heading">
+          <h4>Your Feed</h4>
+        </div>
+        <div class="panel-body" id="feed">
+          <div id="post-area">
+          </div>
+        </div>
+        <div class="panel-footer" id="feed-footer">
+          <div class="input-group" id="post-input">
+            <input type="text" name="post-field" class="form-control" id="post-field">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button" id="post-submit">POST</button>
+            </span>
+          </div>
+        </div>
+      </div> <!-- End col -->
+    </div> <!-- End Row -->
 
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12">
@@ -98,20 +113,20 @@
     </div> <!-- End row -->
 
 
-      <div class="row">
-        <div class="col-lg-7">
-          
-          <div class="panel panel-default" id="toggle-panel">
-            <div class="panel-heading" id="top-headlines">
-            </div>
-            <div class="panel-body" id="articleDropdown">
-              <div id="articleOne" class="well"></div>
-              <div id="articleTwo" class="well"></div>
-              <div id="articleThree" class="well"></div> 
-            </div>
-          </div>
-        </div> 
+    <div class="row">
+      <div class="col-lg-7">
 
+        <div class="panel panel-default" id="toggle-panel">
+          <div class="panel-heading" id="top-headlines">
+          </div>
+          <div class="panel-body" id="articleDropdown">
+            <div id="articleOne" class="well"></div>
+            <div id="articleTwo" class="well"></div>
+            <div id="articleThree" class="well"></div> 
+          </div>
+        </div>
+      </div> 
+      
         <div class="col-lg-5">
           <div class="row">
             <div class="col-lg-11">
@@ -144,8 +159,6 @@
 
         </div> <!-- End col -->
       </div> <!-- End Row -->
-
-    </div> <!-- End Row -->
 
   </div> <!-- End container -->
 

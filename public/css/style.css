@@ -15,6 +15,10 @@ background: linear-gradient(to bottom, rgb(254, 249, 199, .5), #f7f9fb);
 
 #name-header{
   color:black;
+  background: -webkit-linear-gradient(bottom, white), #fef9c7);
+background: -o-linear-gradient(bottom, white, #fef9c7);
+background: -moz-linear-gradient(bottom, white, #fef9c7);
+background: linear-gradient(to bottom, rgb(254, 249, 199, .5), #fef9c7);
 }
 
 .wrapper {
@@ -34,15 +38,19 @@ background: linear-gradient(to bottom, rgb(254, 249, 199, .5), #f7f9fb);
 /* ====================NAVBAR=====================*/
 
 .navbar{
-  padding: 40px 0 0 50px;
-  border-bottom: solid 1px;
-  border-radius: 0;
+padding: 40px 0 0 50px;
+border-bottom: solid 1px;
+border-radius: 0;
 
-  background: white;
-  background: b-wekit-linear-gradient(bottom right, #026670), rgba(255, 255, 255, 1));
+background: white;
+background: b-wekit-linear-gradient(bottom right, #026670), rgba(255, 255, 255, 1));
 background: -o-linear-gradient(bottom right, #31708e, #8Fc1e3);
 background: -moz-linear-gradient(bottom right, #31708e, #8Fc1e3);
 background: linear-gradient(to bottom right, #31708e, #8Fc1e3);
+background: -webkit-linear-gradient(bottom right, #026670), rgba(255, 255, 255, 1));
+background: -o-linear-gradient(bottom right, #026670, rgba(255, 255, 255, 1));
+background: -moz-linear-gradient(bottom right, #026670, rgba(255, 255, 255, 1));
+background: linear-gradient(to bottom right, #026670, rgba(255, 255, 255, 1));
 }
 
 #logo {
@@ -217,6 +225,7 @@ background: linear-gradient(to bottom right, #31708e, #8Fc1e3)
   width: 150px;
   height: 150px;
   padding: 10px;
+  background: #026670;
   border-radius: 50%;
   border: 0;
   color: white;
@@ -229,6 +238,7 @@ background: linear-gradient(to bottom right, #31708e, #8Fc1e3)
 
 .interests button:hover { 
   background: #8Fc1e3; 
+  background: #fce181; 
 }
 
 .interests button:focus { 
@@ -247,10 +257,12 @@ background: linear-gradient(to bottom right, #31708e, #8Fc1e3)
   float:left;
   margin-bottom: 2%;
   background-color:#8Fc1e3 !important;
+  background-color:#9fa9a3 !important;
   position:relative;
 }
 
 /*======= CHATBOX ======*/
+
 #linkBox{
   font: 13px;
   font-family: Helvetica, Arial;
@@ -286,6 +298,9 @@ background: linear-gradient(to bottom right, #31708e, #8Fc1e3)
   width: 40px; 
   padding: 10px; 
   display:inline-block;
+=======
+#empty-space{
+  height:200px;
 }
 
 #chatBox {
