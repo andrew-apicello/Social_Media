@@ -35,9 +35,11 @@ $(document).ready(function() {
         //toggle effect when clicking 
         $(".flip").click(function(){
           $("#toggle-panel").slideToggle("slow");
+          $("#linkBox").slideToggle("slow");
           $("#chatBox").slideToggle("slow");
           room = $(this).text();
           socket.emit('room', room);
+
 
         });
 
@@ -110,29 +112,6 @@ $('#post-submit').on('click', function(event) {
           scrollTop: $('#messages').height()
       }, 1000);
   });
-
-
-  //Change profile pic script
-  var readURL = function(input) {
-      if (input.files && input.files[0]) {
-          var reader = new FileReader();
-
-          reader.onload = function(e) {
-              $('.profile-img').attr('src', e.target.result);
-          }
-          reader.readAsDataURL(input.files[0]);
-      }
-  }
-
-    $(".file-upload").on('change', function() {
-        readURL(this);
-    });
-
-    $(".upload-btn").on('click', function() {
-      
-        event.preventDefault();
-      $(".file-upload").click();
-    });
 
 
 }); //End doc ready
