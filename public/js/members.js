@@ -1,169 +1,222 @@
 $(document).ready(function() {
 
 var username;
+var nsp;
+var room;
+var linkList = [];
+var numLinks = 0;
 
-  // This file just does a GET request to figure out which user is logged in
-  // and updates the HTML on the page
-  $.get("/api/user_data").then(function(data) {
-  	username = data.name;
-  	setUsername();
-    $(".member-name").text(data.name);
-    $(".member-occupation").text(data.occupation);
-    $(".member-location").text(data.location);
-    $(".member-interest1").text(data.interest1);
-    $(".member-interest2").text(data.interest2);
-    $(".member-interest3").text(data.interest3);
-    $(".member-interest4").text(data.interest4);
+// This file just does a GET request to figure out which user is logged in
+// and updates the HTML on the page
+$.get("/api/user_data").then(function(data) {
+	username = data.name;
+	setUsername();
+  $(".member-name").text(data.name);  
+  $(".member-occupation").text(data.occupation);
+  $(".member-location").text(data.location);
+  $(".member-interest1").text(data.interest1);
+  $(".member-interest2").text(data.interest2);
+  $(".member-interest3").text(data.interest3);
+  $(".member-interest4").text(data.interest4);
+  
+  });
 
-		//toggle effect when clicking 
-		$(".flip").click(function(){
-		  $("#toggle-panel").slideToggle("slow");
-		  $("#chatBox").slideToggle("slow");
-		});
+//toggle effect when clicking 
+$(".flip").click(function(){
+  $("#toggle-panel").slideToggle("slow");
+  $("#chatBox").slideToggle("slow");
+  room = $(this).text();
+  socket.emit('room', room);
 
-		$("#search-btn").click(function(){
-			event.preventDefault();
-			var userNameSearch = $("#search-bar").val().trim();
-			console.log("You searched for " + userNameSearch);
-		});    
+  });
 
-	});
+//Feed on click
+$('#post-submit').on('click', function(event) {
+  event.preventDefault();
+  var postBody = $('#post-field').val().trim();
 
-  var nbOptions = 4; // number of menus
-	var angleStart = -360; // start angle
- 
-		// jquery rotate animation
-		function rotate(li,d) {
-		  $({d:angleStart}).animate({d:d}, {
-		   step: function(now) {
-		    $(li)
-		      .css({ transform: 'rotate('+now+'deg)' })
-		      .find('label')
-		       .css({ transform: 'rotate('+(-now)+'deg)' });
-		   }, duration: 0
-		  });
-		}
- 
-		// show / hide the options
-		function toggleOptions(s) {
-		  $(s).toggleClass('open');
-		  var li = $(s).find('li');
-		  var deg = $(s).hasClass('half') ? 180/(li.length-1) : 360/li.length;
-		  for(var i=0; i<li.length; i++) {
-		   var d = $(s).hasClass('half') ? (i*deg)-90 : i*deg;
-		   $(s).hasClass('open') ? rotate(li[i],d) : rotate(li[i],angleStart);
-		  }
-		}
- 
-		$('.selector button').click(function(e) {
-		  toggleOptions($(this).parent());
-		});
-		 
-		setTimeout(function() { toggleOptions('.selector'); }, 100);
+  if(postBody.indexOf('http://') > -1 || postBody.indexOf('https://') > -1){
 
- 	//Feed on click
-  $('#post-submit').on('click', function(event) {
-      event.preventDefault();
+    postBody = postBody.link(postBody)
 
-      var newPost = {
-          author: username,
-          body: $('#post-field').val().trim(),
-          created_at: moment().format('YYYY-MM-DD HH:mm:ss')
-      };
+     var newPost = {
+      author: username,
+      body: postBody,
+      created_at: moment().format('YYYY-MM-DD HH:mm:ss')
+  
+}
+  } else {
 
-      console.log(newPost);
 
-    $.post('api/newFeed', newPost).done(function() {
+  var newPost = {
+      author: username,
+      body: postBody,
+      created_at: moment().format('YYYY-MM-DD HH:mm:ss')
+  
+}
+}
+  console.log(newPost);
 
-        var row = $('<div>');
-        row.addClass('post');
+  $.post('api/newFeed', newPost).done(function() {
 
-        row.append("<p>" + newPost.author + " posted: </p>");
-        row.append("<p>" + newPost.body + "</p>");
-        row.append("<p>At " + moment(newPost.created_at).format("h:mma on dddd") + "</p>");
+      var row = $('<div>');
+      row.addClass('post');
 
-        $("#post-area").prepend(row);
-    	});
+      row.append("<p>" + moment(newPost.created_at).format("dddd MMM Do YYYY - h:mma:") + "</p>");
 
-	$("#post-field").val("");
-	});
+      row.append("<strong><p>" + newPost.author + ": </strong>" + newPost.body + "</p>");
 
-    $.get("/api/allFeed", function(data) {
+      $("#post-area").prepend(row);
+      });
 
-        if (data.length !== 0) {
+      $("#post-field").val("");
+      });
 
-            for (var i = 0; i < data.length; i++) {
+  $.get("/api/allFeed", function(data) {
 
-                var row = $("<div>");
-                row.addClass("post");
+    if (data.length !== 0) {
 
-                row.append("<p>" + data[i].author + " posted.. </p>");
-                row.append("<p>" + data[i].body + "</p>");
-                row.append("<p>At " + moment(data[i].created_at).format("h:mma on dddd") + "</p>");
+      for (var i = 0; i < data.length; i++) {
 
-                $("#post-area").prepend(row);
-            }
+          var row = $("<div>");
+          row.addClass("post");
+
+          row.append("<p>" + data[i].author + " posted.. </p>");
+          row.append("<p>" + data[i].body + "</p>");
+          row.append("<p>At " + moment(data[i].created_at).format("h:mma on dddd") + "</p>");
+
+          $("#post-area").prepend(row);
         }
+      }
     });
 
-	var socket = io();
+  // ============ Socket Chat ===============
+  	var socket = io.connect();
+    var linkCount = 0;
 
-	function setUsername() {
-		socket.emit('set-username', username);
-	}
+  	function setUsername() {
+  		socket.emit('set-username', username);
+  	}
 
-	$('#chatForm').submit(function(){
-	  event.preventDefault();
-	  if ($("#sendMessage").val() == ""){
-	  	return false;
-	  }
-	  socket.emit('chat message', $('#sendMessage').val());
-	  $('#sendMessage').val("");
-	  return false;
-		});
+  	$('#chatForm').submit(function(event){
+  	  event.preventDefault(event);
+  	  if ($("#sendMessage").val() == ""){
+  	  	return false;
+  	  }
 
-	socket.on('chat message', function(msg){
-	  $('#messages').append($('<li>').text(msg.username+": "+msg.message));
+  	  socket.emit('chat message', $('#sendMessage').val());
+  	  $('#sendMessage').val("");
+  	  return false;
+  		});
 
-	  $("#messages").animate({scrollTop: $('#messages').height()}, 1000);
-	});
+      socket.on('chat message', function(msg){
+       var chat = msg.message;
+       var message;
+       
+       var link;
+       var linkIndex;
+       var linkObj = {};
 
-<<<<<<< HEAD
-	console.log('chat script connected')
+       if(chat.indexOf('http://') > -1 || chat.indexOf('https://') > -1){
+        linkCount++;
+        linkIndex = chat.indexOf('http');
+        link = chat.slice(linkIndex);
 
-// let's assume that the client page, once rendered, knows what room it wants to join
-	var room = "abc123";
-
-	socket.on('connect', function() {
-	   // Connected, let's sign-up for to receive messages for this room
-	   socket.emit('room', room);
-	});
-
-	socket.on('message', function(data) {
-	   console.log('Incoming message:', data);
-});
-=======
-	//Change profile pic script
-    var readURL = function(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function(e) {
-                $('.profile-img').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(input.files[0]);
+        var linkData = $('<li>').html(linkCount + ' ' + msg.username + ': ');
+        linkData = linkData.append($('<a>').html(link));
+        linkData.addClass('link' + numLinks);
+        numLinks++;
+        linkObj = {
+          name: msg.username,
+          link: link
         }
+        linkList.push(linkObj);
+
+        $('#link-repo').append(linkData);
+        $('#messages').append($('<li>').text(msg.username+": "+msg.message));
+        $("#messages").animate({scrollTop: $('#messages').height()}, 1000);
+       }
+
+        else {
+        $('#messages').append($('<li>').text(msg.username+": "+msg.message));
+        $("#messages").animate({scrollTop: $('#messages').height()}, 1000);
+       }
+  	});
+
+      //Change profile pic script
+  var readURL = function(input) {
+      if (input.files && input.files[0]) {
+          var reader = new FileReader();
+
+          reader.onload = function(e) {
+              $('.profile-img').attr('src', e.target.result);
+              storePicture(e);
+          }
+          reader.readAsDataURL(input.files[0]);
+      }
+  }
+
+  $(".file-upload").on('change', function() {
+      readURL(this);
+  });
+
+  $(".upload-btn").on('click', function() {
+    
+      event.preventDefault();
+    $(".file-upload").click();
+  });
+
+  $('#link-repo-searchbar').keyup(function(){
+    var input = $('#link-repo-searchbar').val();
+   
+
+    if (linkList.length < 1) {
+      alert('nothing to search!');
+      return false;
     }
 
-    $(".file-upload").on('change', function() {
-        readURL(this);
-    });
+    var filter = input.toLowerCase();
+    var links;
+    var name;
+    var messageLink;
 
-    $(".upload-btn").on('click', function() {
-        event.preventDefault();
-        $(".file-upload").click();
-    });
-    //End profile pic script
->>>>>>> origin
+      for (var i = 0; i < linkList.length; i++) {
+        
+        var name = linkList[i].name.toLowerCase();
+        var messageLink = linkList[i].link.toLowerCase();
+        var targetLink;
+
+        if (name.indexOf(filter) > -1 || messageLink.indexOf(filter) > -1) {
+    
+          console.log('link present');
+          $('.link' + i).css('display', '');
+        } else {
+          console.log('no link present');
+          $('.link' + i).css('display', 'none');
+        }
+      }
+
+  });
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ //End doc ready
