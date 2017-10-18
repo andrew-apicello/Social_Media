@@ -20,5 +20,6 @@
     "database": "csb9pqsx94kdml7z",
     "host": "thh2lzgakldp794r.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "use_env_variable":"mysql://h153upjch5b2jnbi:ii3olewykwb325q8@thh2lzgakldp794r.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/csb9pqsx94kdml7z",  
-    "dialect": "mysql"}
+    "dialect": "mysql"
+  }
 }
