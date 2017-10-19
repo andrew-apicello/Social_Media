@@ -10,14 +10,14 @@ var passport = require("./config/passport");
 MySQLStore = require('connect-mysql')(session),
     options = {
       config: {
-        user: 'root', 
-        password: "", 
-        database: 'social_media_testDB' 
+        user: 'sv5hzubcyvhlwji4', 
+        password: "ek78lpp1y7cdz7m1", 
+        database: 'k2zmh1gurumi3wyi' 
       }
     };
 
 // Setting up port and requiring models for syncing
-var PORT = process.env.PORT || 8080;
+var PORT = process.env.PORT || 3306;
 var db = require("./models");
 
 // Creating express app and configuring middleware needed for authentication
