@@ -7,7 +7,7 @@ var apiKey = "2a22d190b32c4af7a150ebe7c5c075ef"
 var categorySelection = $(this).text();
 var source;
 var categoryArray = ["business", "entertainment", "gaming", "music", "politics", "science and nature", "sports", "technology"]
-var sourceArray = ["the-wall-street-journal","entertainment-weekly","ign","mtv-news","bbc-news","new-scientist","espn","techcrunch"];
+var sourceArray = ["the-wall-street-journal","entertainment-weekly","ign","mtv-news-uk","bbc-news","new-scientist","espn","techcrunch"];
 
 
 for (var i=0;i<categoryArray.length;i++){

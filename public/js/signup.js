@@ -33,6 +33,12 @@ $(document).ready(function() {
     if (!userData.name || !userData.email || !userData.occupation || !userData.location || !userData.interest1 || !userData.interest2 || !userData.interest3 || !userData.interest4 || !userData.password || !userData.image || !userData.bio) {
       return;
     }
+
+    if (userData.interest1 == userData.interest2 || userData.interest1 == userData.interest3 || userData.interest1 == userData.interest4 || userData.interest2 == userData.interest3 || userData.interest2 == userData.interest4 || userData.interest3 == userData.interest4){
+      $("#errorMessage").text("Please enter four unique interests to sign up!")
+      return;
+    }
+
     // If we have an email and password, run the signUpUser function
     signUpUser(userData.name, userData.email, userData.occupation, userData.location, userData.interest1, userData.interest2, userData.interest3, userData.interest4, userData.password, userData.image, userData.bio);
     nameInput.val("");
